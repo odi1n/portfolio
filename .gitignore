@@ -6,13 +6,14 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+/venv
 
 #### IDEA
 .idea
 
 #### Django
 # static
-api/static/
+static/
 
 # Byte-compiled / optimized / DLL files
 __pycache__

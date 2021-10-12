@@ -1,0 +1,313 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Резюме - Иван Иванович Иванов</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+
+  <style type="text/css">
+    @page {
+      size: a4;
+      margin: 1.5cm 1.25cm;
+    }
+
+    @font-face {
+      font-family: Arial;
+      src: url("{% static "fonts/Arial.ttf" %}");
+    }
+
+    @font-face {
+      font-family: Maler;
+      src: url("{% static "fonts/Maler.ttf" %}");
+    }
+
+    @font-face {
+      font-family: Verdana;
+      src: url("{% static "fonts/Verdana.ttf" %}");
+    }
+
+
+    body {
+      font-weight: 200;
+      font-size: 14px;
+      color: #000000;
+    }
+
+    h1, h2, h3, h4, h5 {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    p {
+      margin: 0px;
+      padding: 0px;
+      font-size: 12px;
+    }
+
+    .hrItem {
+      border: none;
+      height: 1px;
+      color: #838383; /* old IE */
+      background-color: #838383; /* Modern Browsers */
+      margin: 10px 0;
+    }
+
+    .hrTable {
+      border: none;
+      height: 1px;
+      color: #f1f1f1; /* old IE */
+      background-color: #F1F1F1FF; /* Modern Browsers */
+      margin: 20px 0;
+    }
+
+    .header {
+      font-size: 20px;
+      font-weight: 100;
+      text-align: left;
+    }
+
+    .stack {
+      margin-bottom: 10px;
+    }
+
+    .experience {
+      font-size: 12px;
+    }
+
+    .knowledge {
+      padding-top: 30px;
+      font-size: 10px;
+    }
+
+    .item {
+      margin-bottom: 15px;
+    }
+
+    tr, td {
+      font-size: 10px;
+    }
+
+    .heading {
+      font-weight: bold;
+      font-size: 12px;
+      padding-right: 50px;
+    }
+
+    .test2 {
+      padding-bottom: 10px;
+    }
+
+    .test {
+      font-size: 10px;
+    }
+
+    .test3 {
+      padding-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='header'>
+    <h2 class="stack">A. Fullstack</h2>
+    <h3 class="experience">стаж с 2014 года</h3>
+
+    <div class="knowledge">
+      <p>Ruby on Rails Node.JS Front/React.js Bootstrap Front/TypeScript React.Native DB/PostgreSQL DB/Mongo</p>
+    </div>
+  </div>
+  <hr class="hrItem">
+
+  <div class="about-me">
+    <div>
+      <p>ФИО:
+        <span>Иванов Иван Иваныч</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Пол:
+        <span>Мужской</span>
+      </p>
+    </div>
+
+    <div class="item">
+      <p>Возраст:
+        <span>05.05.1999, 22 года</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Email:
+        <span>example@com.ru</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Телефон:
+        <span>+380666666666</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Skype: <span>@test_skype</span></p>
+      <p>Telegram: <span>@test_telegram</span></p>
+    </div>
+
+    <div class="item">
+      <p>Репозиторий:
+        <a href="https://github.com/" target="_blank">https://github.com/</a>
+      </p>
+    </div>
+
+    <div>
+      <p>Образование:
+        <span>Неоконченное высшее</span>
+      </p>
+    </div>
+
+    <div class="item">
+      <p>Знание языков:</p>
+      <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+        <li>Русский - Родной</li>
+        <li>Украинский - В совершенстве</li>
+      </ol>
+    </div>
+  </div>
+  <hr class="hrItem">
+
+  <div class="about-me">
+    <div>
+      <p>Грейд:
+        <span>Middle</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Желаемая зарплата:
+        <span>135.000Р</span>
+      </p>
+    </div>
+
+    <div class="item">
+      <p>Желаемая должность:
+        <span>Back-End разработчик Django, Django Rest Framework</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Время в пути до работы:
+        <span>не имеет значения</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Занятость:
+        <span>частичная занятость, полная занятость</span>
+      </p>
+    </div>
+
+
+    <div>
+      <p>График работы:</p>
+
+      <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+        <li>удаленная работа</li>
+        <li>гибкий график</li>
+        <li>полный день</li>
+      </ol>
+    </div>
+
+  </div>
+  <hr class="hrItem">
+
+  <div class="skills">
+    <div class="item">
+      <p>Programming Languages:</p>
+      <p>JavaScript, Typescript, Ruby, Coffeescript, HTML/HTML5, CSS/CSS3</p>
+    </div>
+
+    <div class="item">
+      <p>Framework/Libraries:</p>
+      <p>React.js, Redux, Redux Saga, Material Design, Redux-thunk, React-Hooks, Node.js, ExpressJS, Sails.js,
+        Serverless, LoopBack, Sequelize Ruby on Rails, React-Native, Vue.js, jQuery, Axios, Gatsby, Bootstrap,
+        SASS(SCSS), LESS, PostCSS, Stylus, Animate.css, Socket.io, Underscore, Moment.js, Lodash, Mobx</p>
+    </div>
+
+    <div class="item">
+      <p>DBMS:</p>
+      <p>MongoDB, PostgreSQL, DynamoDB, Redis, Firebase</p>
+    </div>
+
+    <div class="item">
+      <p>Application/Web Servers:</p>
+      <p>RabbitMQ, Elasticsearch, Nginx, Apache</p>
+    </div>
+
+    <div class="item">
+      <p>Cloud services:</p>
+      <p>AWS, Heroku, STRIPE, Lambda, EC2, s3 bucket, Google Maps</p>
+    </div>
+
+    <div class="item">
+      <p>Other:</p>
+      <p>Responsive Web Development, Adaptive Web, Docker, Agile, MVC, Ajax, XML, JSON, Unix, SSH</p>
+    </div>
+
+    <div class="item">
+      <p>Development Tools:</p>
+      <p>CSS modules, Git, Webpack</p>
+    </div>
+
+    <div class="item">
+      <p>Application Type:</p>
+      <p>Social Networks, REST</p>
+    </div>
+  </div>
+  <hr class="hrItem">
+
+  <div class='example-works'>
+    <h2 class="stack">Опыт</h2>
+
+    <div>
+      {% for n in '0123456789'|make_list %}
+        <table border="1">
+          <tr>
+            <th class="heading test2">Проект</th>
+            <th class="heading test2">Perxtech</th>
+          </tr>
+          <tr>
+            <td class="heading test2">Описание.</td>
+            <td class="test2">
+              Проект представляет собой приложение по управлению маркетинговыми кампаниями для бизнеса различного
+              масштаба.
+              Perxtech предлагает услуги по построению программ лояльности для покупателей, геймификации получения
+              реальных бонусов для потребителя, а также предлагает инструменты маркетинговой аналитики.
+              Perxtech позволяет владельцам бизнеса самостоятельно планировать кампании по привлечению клиентов, путём
+              кастомизированной системы поощрений, подсчета бонусов и выдачи сертификатов для их покупателей.
+              Искусственный интеллект проекта может настроить на запуск триггеров по различным акциям Клиента - по
+              дате (например, ближе ко дню рождения того или иного покупателя) или по локации (например, предложить
+              акционный товар в магазине, который часто посещает тот или иной Клиент).
+              Что было сделано
+            </td>
+          </tr>
+          <tr>
+            <td class="heading">Технологии</td>
+            <td class="test">JavaScript / Typescript / Angular 8 / React.js / Redux / Redux Saga / Ruby / Ruby on Rails
+              / ElasticSearch / PostgreSQL / Google Analytics Интеграции: AWS S3 / Payment systems / Complex data
+              through APIs / Sentry / Google trace
+            </td>
+          </tr>
+        </table>
+        <hr class="hrTable">
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
