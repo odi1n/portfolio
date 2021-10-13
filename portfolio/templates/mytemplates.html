@@ -16,17 +16,17 @@
 
     @font-face {
       font-family: Arial;
-      src: url("{% static "fonts/Arial.ttf" %}");
+      src: url("{% static " fonts/Arial.ttf " %}");
     }
 
     @font-face {
       font-family: Maler;
-      src: url("{% static "fonts/Maler.ttf" %}");
+      src: url("{% static " fonts/Maler.ttf " %}");
     }
 
     @font-face {
       font-family: Verdana;
-      src: url("{% static "fonts/Verdana.ttf" %}");
+      src: url("{% static " fonts/Verdana.ttf " %}");
     }
 
 
@@ -41,10 +41,12 @@
       padding: 0px;
     }
 
-    p {
+    p, a {
       margin: 0px;
       padding: 0px;
       font-size: 12px;
+      text-decoration: none;
+      color: #000000;
     }
 
     .hrItem {
@@ -114,7 +116,7 @@
 <div class='wrapper'>
   <div class='header'>
     <h2 class="stack">A. Fullstack</h2>
-    <h3 class="experience">стаж с 2014 года</h3>
+    <h3 class="experience">опыт работы с 2014 года</h3>
 
     <div class="knowledge">
       <p>Ruby on Rails Node.JS Front/React.js Bootstrap Front/TypeScript React.Native DB/PostgreSQL DB/Mongo</p>
@@ -158,10 +160,14 @@
       <p>Telegram: <span>@test_telegram</span></p>
     </div>
 
-    <div class="item">
-      <p>Репозиторий:
-        <a href="https://github.com/" target="_blank">https://github.com/</a>
-      </p>
+    <div class="item" style="display: flex">
+      <p style="margin-right: 10px">Репозиторий:</p>
+      <div style="display: flex; width: 95%; flex-wrap: wrap">
+        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://github.com/</a>
+        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://gitlab.com/</a>
+        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://bitbucket.org/</a>
+      </div>
+
     </div>
 
     <div>
@@ -175,6 +181,17 @@
       <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
         <li>Русский - Родной</li>
         <li>Украинский - В совершенстве</li>
+      </ol>
+    </div>
+
+    <div>
+      <p>Опыт работы:</p>
+
+      <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+        <li>Rocket Science - Разработчик. Март 2021 - По настроящее время (8месяцев)</li>
+        <li>Rocket Science - Разработчик. Март 2021 - По настроящее время (8месяцев)</li>
+        <li>Rocket Science - Разработчик. Март 2021 - По настроящее время (8месяцев)</li>
+        <li>Rocket Science - Разработчик. Март 2021 - По настроящее время (8месяцев)</li>
       </ol>
     </div>
   </div>
@@ -270,40 +287,40 @@
   </div>
   <hr class="hrItem">
 
+
   <div class='example-works'>
     <h2 class="stack">Опыт</h2>
-
     <div>
       {% for n in '0123456789'|make_list %}
-        <table border="1">
-          <tr>
-            <th class="heading test2">Проект</th>
-            <th class="heading test2">Perxtech</th>
-          </tr>
-          <tr>
-            <td class="heading test2">Описание.</td>
-            <td class="test2">
-              Проект представляет собой приложение по управлению маркетинговыми кампаниями для бизнеса различного
-              масштаба.
-              Perxtech предлагает услуги по построению программ лояльности для покупателей, геймификации получения
-              реальных бонусов для потребителя, а также предлагает инструменты маркетинговой аналитики.
-              Perxtech позволяет владельцам бизнеса самостоятельно планировать кампании по привлечению клиентов, путём
-              кастомизированной системы поощрений, подсчета бонусов и выдачи сертификатов для их покупателей.
-              Искусственный интеллект проекта может настроить на запуск триггеров по различным акциям Клиента - по
-              дате (например, ближе ко дню рождения того или иного покупателя) или по локации (например, предложить
-              акционный товар в магазине, который часто посещает тот или иной Клиент).
-              Что было сделано
-            </td>
-          </tr>
-          <tr>
-            <td class="heading">Технологии</td>
-            <td class="test">JavaScript / Typescript / Angular 8 / React.js / Redux / Redux Saga / Ruby / Ruby on Rails
-              / ElasticSearch / PostgreSQL / Google Analytics Интеграции: AWS S3 / Payment systems / Complex data
-              through APIs / Sentry / Google trace
-            </td>
-          </tr>
-        </table>
-        <hr class="hrTable">
+      <table border="1">
+        <tr>
+          <th class="heading test2">Проект</th>
+          <th class="heading test2">Perxtech</th>
+        </tr>
+        <tr>
+          <td class="heading test2">Описание.</td>
+          <td class="test2">
+            Проект представляет собой приложение по управлению маркетинговыми кампаниями для бизнеса различного
+            масштаба.
+            Perxtech предлагает услуги по построению программ лояльности для покупателей, геймификации получения
+            реальных бонусов для потребителя, а также предлагает инструменты маркетинговой аналитики.
+            Perxtech позволяет владельцам бизнеса самостоятельно планировать кампании по привлечению клиентов, путём
+            кастомизированной системы поощрений, подсчета бонусов и выдачи сертификатов для их покупателей.
+            Искусственный интеллект проекта может настроить на запуск триггеров по различным акциям Клиента - по
+            дате (например, ближе ко дню рождения того или иного покупателя) или по локации (например, предложить
+            акционный товар в магазине, который часто посещает тот или иной Клиент).
+            Что было сделано
+          </td>
+        </tr>
+        <tr>
+          <td class="heading">Стэк</td>
+          <td class="test">JavaScript / Typescript / Angular 8 / React.js / Redux / Redux Saga / Ruby / Ruby on Rails
+            / ElasticSearch / PostgreSQL / Google Analytics Интеграции: AWS S3 / Payment systems / Complex data
+            through APIs / Sentry / Google trace
+          </td>
+        </tr>
+      </table>
+      <hr class="hrTable">
       {% endfor %}
     </div>
 
