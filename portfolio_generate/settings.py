@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my project
-    'portfolio.apps.PortfolioConfig',
+    # 'portfolio.apps.PortfolioConfig',
     'users.apps.UsersConfig',
 ]
 
