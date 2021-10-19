@@ -11,3 +11,7 @@ class Social(models.Model):
                                     on_delete=models.CASCADE)
     values = models.CharField(verbose_name="Значение",
                               max_length=255)
+
+    class Meta:
+        verbose_name = "Социальные"
+        verbose_name_plural = 'Социальные'
