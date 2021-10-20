@@ -14,7 +14,8 @@ class Portfolio(models.Model):
     tech = models.ManyToManyField(Tech,
                                   verbose_name="Используемые технологии")
     setting = models.JSONField(verbose_name="Настройки",
-                               default=dict)
+                               default={"portfolio":False,
+                                        "work_places":False})
 
     class Meta:
         verbose_name = "Портфолио"

@@ -16,7 +16,7 @@ def generate(templates, context):
 
     # Создание http ответа
     response = HttpResponse(content_type='application/pdf;')
-    response['Content-Disposition'] = 'inline; filename=list_people.pdf'
+    response['Content-Disposition'] = 'inline; filename=Rezume.pdf'
     response['Content-Transfer-Encoding'] = 'binary'
     with tempfile.NamedTemporaryFile(delete=True) as output:
         output.write(result)
@@ -53,13 +53,15 @@ class PortfolioView(View):
 
         context = {
             "portfolio": portfolio,
-            "work": work,
-            "experiences": experiences,
-            "techs": techs,
-
             "socials": socials,
             "languages": languages,
             "work_places": work_places,
+
+            "work": work,
+
+            "techs": techs,
+
+            "experiences": experiences,
         }
 
         return generate(templates=self.template_name, context=context)
