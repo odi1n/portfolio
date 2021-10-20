@@ -7,6 +7,8 @@ class Portfolio(models.Model):
     user = models.ForeignKey("users.CustomUser",
                              verbose_name="Пользователь",
                              on_delete=models.CASCADE)
+    experience_with = models.DateTimeField(verbose_name="Опыт работы с",
+                                       help_text="Указать год, с которого начали работать")
     stack = models.IntegerField(verbose_name="Стэк",
                                 choices=StackType.choices)
     tech = models.ManyToManyField(Tech,

@@ -6,7 +6,8 @@ from ..models import Portfolio
 class PortfolioAdmin(admin.ModelAdmin):
     autocomplete_fields = ['user']
     filter_horizontal = ['tech']
-    list_display = ['user',
+    list_display = ['id',
+                    'user',
                     'stack']
     list_filter = ['stack']
     search_fields = ['user__username']

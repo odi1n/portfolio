@@ -10,10 +10,10 @@ class Work(models.Model):
     grade = models.CharField(verbose_name="Градация",
                              help_text="Например: Junior, Middle, Senio, DevOps, Архитектор, ...",
                              max_length=255)
-    salary = models.CharField(verbose_name="Желаемая зарплата",
-                              max_length=255,
-                              null=True,
-                              blank=True)
+    salary = models.IntegerField(verbose_name="Желаемая зарплата",
+                                 default=0,
+                                 null=True,
+                                 blank=True)
     post = models.CharField(verbose_name="Желаемая должность",
                             max_length=255,
                             null=True,
@@ -32,5 +32,5 @@ class Work(models.Model):
                                    blank=True)
 
     class Meta:
-        verbose_name = "Место работы"
-        verbose_name_plural = 'Место работы'
+        verbose_name = "Пожелания для устройства"
+        verbose_name_plural = 'Пожелания для устройства'

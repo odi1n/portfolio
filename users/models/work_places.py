@@ -7,6 +7,7 @@ class WorkPlace(models.Model):
                              verbose_name="Пользователь",
                              on_delete=models.CASCADE)
     text = models.CharField(verbose_name="Место работы",
+                            help_text="Например: Rocket Science - Разработчик. Март 2021 - По настроящее время (8месяцев)",
                             max_length=255)
 
     class Meta:

@@ -16,6 +16,7 @@ class Social(models.Model):
     class Meta:
         verbose_name = "Социальные"
         verbose_name_plural = 'Социальные'
+        ordering = ['social_type']
 
     def __str__(self):
         return f'{self.social_type} - {self.values}'
