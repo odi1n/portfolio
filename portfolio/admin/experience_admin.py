@@ -4,4 +4,9 @@ from ..models import Experience
 
 @admin.register(Experience)
 class ExperienceAdmin(admin.ModelAdmin):
-    pass
+    autocomplete_fields = ['portfolio',
+                           'project']
+    list_display = ['portfolio',
+                    'project',
+                    'description',
+                    'is_enabled']

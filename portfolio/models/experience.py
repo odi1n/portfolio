@@ -2,6 +2,7 @@ from django.db import models
 from .portfolio import Portfolio
 from .project import Project
 
+
 class Experience(models.Model):
     portfolio = models.ForeignKey(Portfolio,
                                   verbose_name="Портфолио",
@@ -10,9 +11,12 @@ class Experience(models.Model):
                                 verbose_name="Проект",
                                 on_delete=models.CASCADE)
     description = models.TextField(verbose_name="Описание")
-    is_enabled = models.BooleanField(verbose_name="Включено",
-                                     default=False)
+    is_enabled = models.BooleanField(verbose_name="Выводить",
+                                     default=True)
 
     class Meta:
         verbose_name = "Опыт"
         verbose_name_plural = 'Опыт'
+
+    def __str__(self):
+        return f'{self.project} - {self.description}'

@@ -4,4 +4,8 @@ from ..models import Tech
 
 @admin.register(Tech)
 class TechAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['category',
+                     'text']
+    list_display = ['category',
+                    'text']
+    list_filter = ['category']
