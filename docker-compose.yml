@@ -1,0 +1,40 @@
+version: '3.3'
+
+services:
+  postgres:
+    container_name: pr_postgres
+    image: postgres:13.3
+    restart: always
+    hostname: postgres
+    environment:
+      POSTGRES_DB: 'portfolio_db'
+      POSTGRES_USER: 'portfolio_admin'
+      POSTGRES_PASSWORD: 'admin'
+      POSTGRES_HOST: 'localhost'
+      POSTGRES_POST: '5432'
+      CONFIGS: "listen_addresses:'*',max_replication_slots:5"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres/:/var/lib/postgresql/data
+      - ./data/shared/backups:/backups
+    healthcheck:
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    container_name: pr_backend
+    restart: always
+    build: ./
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_HOST=postgres
+    depends_on:
+      - postgres
