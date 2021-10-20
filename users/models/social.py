@@ -2,6 +2,7 @@ from django.db import models
 from .custom_user import CustomUser
 from .social_type import SocialType
 
+
 class Social(models.Model):
     user = models.ForeignKey(CustomUser,
                              verbose_name="Пользователь",
@@ -15,3 +16,6 @@ class Social(models.Model):
     class Meta:
         verbose_name = "Социальные"
         verbose_name_plural = 'Социальные'
+
+    def __str__(self):
+        return f'{self.social_type} - {self.values}'

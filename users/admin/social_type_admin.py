@@ -4,4 +4,4 @@ from ..models import SocialType
 
 @admin.register(SocialType)
 class SocialTypeAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['name']

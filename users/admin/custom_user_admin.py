@@ -43,3 +43,6 @@ class CustomUserAdmin(UserAdmin):
          ),
     )
     ordering = ('-date_joined',)
+    search_fields = ['email',
+                     'username',
+                     'first name']

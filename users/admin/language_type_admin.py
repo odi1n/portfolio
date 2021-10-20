@@ -4,4 +4,5 @@ from ..models import LanguageType
 
 @admin.register(LanguageType)
 class LanguageTypeAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['text']
+    list_filter = ['text']
