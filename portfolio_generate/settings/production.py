@@ -3,6 +3,9 @@ from .base import *
 # Secret Key
 SECRET_KEY = env.str('SECRET_KEY')
 
+# Static
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Debug
 DEBUG = env.bool('DEBUG')
 

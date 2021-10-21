@@ -233,9 +233,7 @@
     {% for tech in techs %}
     <div class="item">
       <p>{{tech.label}}:</p>
-      <p>
-        {%for param in tech.params%} {{param}}, {%endfor%}
-      </p>
+      <p>{{tech.params|join:', '}}</p>
     </div>
 
     {%endfor%}
@@ -259,11 +257,7 @@
         </tr>
         <tr>
           <td class="heading">Стэк</td>
-          <td class="test">
-            {% for tech in experience.project.tech.all %}
-            <span>{{tech.text}}</span>,
-            {%endfor%}
-          </td>
+          <td class="test">{% for tech in experience.project.tech.all %}<span>{{tech.text}}</span>, {%endfor%}</td>
         </tr>
       </table>
       <hr class="hrTable">
