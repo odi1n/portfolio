@@ -22,7 +22,12 @@ WORKDIR /usr/src/app
 COPY poetry.lock pyproject.toml /usr/src/app/
 
 RUN poetry config virtualenvs.create false \
-    && poetry install $(test "$YOUR_ENV" == production && echo "--no-dev") --no-interaction --no-ansi \
-    && pip install https://github.com/mher/flower/zipball/master#egg=flower
+    && poetry install $(test "$YOUR_ENV" == production && echo "--no-dev") --no-interaction --no-ansi
 
 COPY . /usr/src/app
+
+RUN python manage.py dumpdata > db.json \
+    && python manage.py collectstatic --noinput \
+#    && python manage.py makemigrations \
+#    && python manage.py migrate
+

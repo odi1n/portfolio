@@ -1,4 +1,5 @@
 {% load static %}
+{% load my_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -116,7 +117,7 @@
 <div class='wrapper'>
   <div class='header'>
     <h2 class="stack">{{portfolio.user.first_name}} {{portfolio.user.last_name}}. {{ portfolio.get_stack_display }}</h2>
-    <h3 class="experience">опыт работы с {{ portfolio.experience_with.year }} года</h3>
+    <h3 class="experience">Возраст: {{portfolio.user.age}}. Опыт работы c: {{ portfolio.experience_with.year }}.</h3>
   </div>
   <hr class="hrItem">
 
@@ -248,16 +249,27 @@
         <tr>
           <th class="heading test2">Проект</th>
           <th class="heading test2">
+            {% if experience.project.link %}
             <a href="{{experience.project.link}}">{{experience.project.title}}</a>
+            {%else%}
+            <span>{{experience.project.title}}</span>
+            {% endif %}
           </th>
         </tr>
         <tr>
-          <td class="heading test2">Описание.</td>
-          <td class="test2">{{experience.description}}</td>
+          <td class="heading test2">Описание</td>
+          <td class="test2">
+            {%if experience.project.description%}
+            <span>{{experience.project.description}}</span>
+            <br>
+            <br>
+            {%endif%}
+            <span>{{experience.description}}</span>
+          </td>
         </tr>
         <tr>
-          <td class="heading">Стэк</td>
-          <td class="test">{% for tech in experience.project.tech.all %}<span>{{tech.text}}</span>, {%endfor%}</td>
+          <td class="heading">Технологии</td>
+          <td class="test">{{ experience.project.tech.all|dict_join }}</td>
         </tr>
       </table>
       <hr class="hrTable">
