@@ -30,8 +30,7 @@ class PortfolioView(View):
     template_name = "mytemplates.html"
 
     def get(self, request, *args, **kwargs):
-        portfolio = Portfolio.objects.filter(id=kwargs.get('pk'),
-                                             user=request.user).first()
+        portfolio = Portfolio.objects.filter(id=kwargs.get('pk')).first()
         work = Work.objects.filter(portfolio=portfolio).first()
         experiences = Experience.objects.filter(portfolio=portfolio)
 
