@@ -35,9 +35,9 @@ class PortfolioView(View):
         work = Work.objects.filter(portfolio=portfolio).first()
         experiences = Experience.objects.filter(portfolio=portfolio)
 
-        socials = Social.objects.filter(user=request.user)
-        languages = Language.objects.filter(user=request.user)
-        work_places = WorkPlace.objects.filter(user=request.user)
+        socials = Social.objects.filter(user=portfolio.user)
+        languages = Language.objects.filter(user=portfolio.user)
+        work_places = WorkPlace.objects.filter(user=portfolio.user)
 
         categorys = [CategoryType.PROJRAMS_LANGUAGE, CategoryType.FRAMEWORK,
                      CategoryType.LIBRARIES, CategoryType.DBMS, CategoryType.CLOUD_SERVICE,
