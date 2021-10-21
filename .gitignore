@@ -8,13 +8,13 @@ env.bak/
 venv.bak/
 /venv
 /data
-
 #### IDEA
 .idea
 
 #### Django
 # static
 static/
+staticfiles/
 
 # Byte-compiled / optimized / DLL files
 __pycache__
