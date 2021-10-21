@@ -115,7 +115,7 @@
 <body>
 <div class='wrapper'>
   <div class='header'>
-    <h2 class="stack">A. {{ portfolio.get_stack_display }}</h2>
+    <h2 class="stack">{{portfolio.user.first_name}} {{portfolio.user.last_name}}. {{ portfolio.get_stack_display }}</h2>
     <h3 class="experience">опыт работы с {{ portfolio.experience_with.year }} года</h3>
   </div>
   <hr class="hrItem">
