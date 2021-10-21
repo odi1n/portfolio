@@ -31,6 +31,9 @@ class PortfolioView(View):
 
     def get(self, request, *args, **kwargs):
         portfolio = Portfolio.objects.filter(id=kwargs.get('pk')).first()
+        if portfolio is None:
+            return HttpResponse("error number portfokio")
+
         work = Work.objects.filter(portfolio=portfolio).first()
         experiences = Experience.objects.filter(portfolio=portfolio)
 
