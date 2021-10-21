@@ -1,22 +1,22 @@
 from django.db import models
+from .tech import Tech
 
 
-# Create your models here.
 class Project(models.Model):
-    name = models.CharField(verbose_name="Название",
-                            max_length=255)
-    description = models.TextField(verbose_name="Описание проекта",
+    title = models.CharField(verbose_name="Название",
+                             max_length=255)
+    link = models.URLField(verbose_name="Ссылка на проект",
+                           null=True,
+                           blank=True)
+    description = models.TextField(verbose_name="Описание",
                                    null=True,
                                    blank=True)
-    updated_at = models.DateTimeField(verbose_name='Обновлено',
-                                      auto_now=True)
-    created_at = models.DateTimeField(verbose_name="Добавлен",
-                                      auto_now_add=True)
+    tech = models.ManyToManyField(Tech,
+                                  verbose_name="Технологии проекта")
 
     class Meta:
-        ordering = ['-id']
-        verbose_name = "Проект"
-        verbose_name_plural = "Проект"
+        verbose_name = "Проекты"
+        verbose_name_plural = 'Проекты'
 
     def __str__(self):
-        return self.name
+        return self.title

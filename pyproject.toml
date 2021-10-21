@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "portfolio"
+version = "0.1.0"
+description = ""
+readme = 'README.md'
+authors = ["odi1n"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+django-environ = "^0.7.0"
+weasyprint = "^53.3"
+Django = "^3.2.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
