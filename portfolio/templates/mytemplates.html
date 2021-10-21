@@ -259,9 +259,11 @@
         <tr>
           <td class="heading test2">Описание</td>
           <td class="test2">
+            {%if experience.project.description%}
             <span>{{experience.project.description}}</span>
             <br>
             <br>
+            {%endif%}
             <span>{{experience.description}}</span>
           </td>
         </tr>
