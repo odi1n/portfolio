@@ -9,5 +9,5 @@ def dict_join(qs):
     for index, value in enumerate(qs.values('text')):
         values += value['text']
         if index != qs.count() - 1:
-            values += ', '
+            values += ' / '
     return values
