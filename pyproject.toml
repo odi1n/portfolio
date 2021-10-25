@@ -15,7 +15,8 @@ Django = "^3.2.8"
 django-environ = "^0.7.0"
 django-json-widget = "^1.1.1"
 
-weasyprint = "^53.3"
+weasyprint = "52.5"
+transliterate = "^1.10.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

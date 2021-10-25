@@ -5,7 +5,7 @@ import tempfile
 from django.views import View
 
 
-def generate(templates, context):
+def generate(templates, context, data:str):
     # Обработка шаблона
     html_string = render_to_string('mytemplates.html', context)
     html = HTML(string=html_string)
@@ -13,7 +13,7 @@ def generate(templates, context):
 
     # Создание http ответа
     response = HttpResponse(content_type='application/pdf;')
-    response['Content-Disposition'] = 'inline; filename=Rezume.pdf'
+    response['Content-Disposition'] = f'inline; filename={data}.pdf'
     response['Content-Transfer-Encoding'] = 'binary'
     with tempfile.NamedTemporaryFile(delete=True) as output:
         output.write(result)
