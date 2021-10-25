@@ -13,6 +13,7 @@ psycopg2-binary = "^2.9.1"
 
 Django = "^3.2.8"
 django-environ = "^0.7.0"
+django-json-widget = "^1.1.1"
 
 weasyprint = "^53.3"
 

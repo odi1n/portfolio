@@ -19,4 +19,4 @@ class Experience(models.Model):
         verbose_name_plural = 'Опыт'
 
     def __str__(self):
-        return f'{self.project} - {self.description}'
+        return f'Проект: {self.project}, описание: {self.description[:150]}...'
