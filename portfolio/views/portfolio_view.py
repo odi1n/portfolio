@@ -7,6 +7,7 @@ from users.models import Social, Language, WorkPlace
 from ..models import Portfolio, Work, Experience, Tech
 from ..models.type import CategoryType
 from ..service.generate_pdf import generate
+import transliterate
 
 
 class PortfolioView(View):
@@ -29,7 +30,8 @@ class PortfolioView(View):
                      CategoryType.OTHER, CategoryType.DEVELOPMENT_TOOL, CategoryType.APP_TYPE]
         techs = []
         for category in categorys:
-            portf = Portfolio.objects.filter(tech__category=category)
+            portf = Portfolio.objects.filter(tech__category=category,
+                                             user=portfolio.user).order_by('tech')
             if portf.count() > 0:
                 techs.append({
                     "label": category.label,
@@ -49,4 +51,8 @@ class PortfolioView(View):
             "experiences": experiences,
         }
 
-        return generate(templates=self.template_name, context=context)
+        return generate(templates=self.template_name,
+                        context=context,
+                        data=transliterate.translit(
+                            f'Резюме - {portfolio.user.first_name} {portfolio.user.last_name}. {portfolio.get_stack_display()}',
+                            reversed=True))
