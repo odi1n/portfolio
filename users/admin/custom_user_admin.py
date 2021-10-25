@@ -28,8 +28,8 @@ class CustomUserAdmin(UserAdmin):
                        'password']
         }),
         [('Персональные данные'), {
-            'fields': ['first_name',
-                       'last_name',
+            'fields': ['last_name',
+                       'first_name',
                        'middle_name',
                        'sex',
                        'age', ],
