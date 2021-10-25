@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # plugins
+    'django_json_widget',
+
     # my project
     'portfolio.apps.PortfolioConfig',
     'users.apps.UsersConfig',
