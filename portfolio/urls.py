@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import PortfolioView
+from .views import PortfolioView, home_view
 
 urlpatterns = [
+    path('', home_view, name="home_index"),
     path('portfolio/<int:pk>', PortfolioView.as_view(), name="portfolio"),
 ]
