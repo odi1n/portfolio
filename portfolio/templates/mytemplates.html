@@ -178,7 +178,7 @@
 
       <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
         {% for work_place in work_places%}
-        <li>{{work_place.text}}</li>
+        <li>{{work_place|work_place_tags}} </li>
         {% endfor %}
       </ol>
     </div>
@@ -245,6 +245,7 @@
     <h2 class="stack">Опыт</h2>
     <div>
       {% for experience in experiences %}
+      {% if experience.is_enabled %}
       <table border="1">
         <tr>
           <th class="heading test2">Проект</th>
@@ -273,6 +274,7 @@
         </tr>
       </table>
       <hr class="hrTable">
+      {% endif %}
       {% endfor %}
     </div>
 
