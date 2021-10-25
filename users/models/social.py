@@ -9,7 +9,7 @@ class Social(models.Model):
                              on_delete=models.CASCADE)
     social_type = models.ForeignKey(SocialType,
                                     verbose_name="Тип соц.",
-                                    on_delete=models.CASCADE)
+                                    on_delete=models.PROTECT)
     values = models.CharField(verbose_name="Значение",
                               max_length=255)
 
