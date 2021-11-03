@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
+from .inline import *
 from ..models import CustomUser
 
 
@@ -53,6 +54,9 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('username', 'email', 'password1', 'password2', 'is_staff', 'is_active')}
          ),
     )
+    inlines = [LanguageStackedInline,
+               SocialStackedInline,
+               WorkPlaceStackedInline]
     ordering = ('-date_joined',)
     search_fields = ['email',
                      'username',
