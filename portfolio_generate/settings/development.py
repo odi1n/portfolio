@@ -11,6 +11,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Debug
 DEBUG = env.bool('DEBUG', default=True)
 
+# TimeZone
+TIME_ZONE = env.str('TIME_ZONE', default='Europe/Moscow')
+
 # Allowed
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default='*')
 
