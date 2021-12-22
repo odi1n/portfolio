@@ -1,20 +1,30 @@
 version: '3.3'
 
 services:
+  nginx:
+    container_name: pr_nginx
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles/
+    ports:
+      - 8080:80
+    depends_on:
+      - backend
+
   backend:
     container_name: pr_backend
     restart: always
     build: ./
-    command: python manage.py runserver 0.0.0.0:8000
+#    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn portfolio_generate.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/web/staticfiles/
     ports:
       - 8000:8000
     env_file:
-      - .env
+      - .env.prod
     environment:
       - POSTGRES_HOST=postgres
-      - TIME_ZONE=Europe/Moscow
     depends_on:
       - postgres
 
