@@ -26,8 +26,8 @@ RUN poetry config virtualenvs.create false \
 
 COPY . /usr/src/app
 
-RUN python manage.py dumpdata > db.json \
-    && python manage.py collectstatic --noinput \
+#RUN python manage.py dumpdata > db.json \
+#    && python manage.py collectstatic --noinput \
 #    && python manage.py makemigrations \
 #    && python manage.py migrate
 
