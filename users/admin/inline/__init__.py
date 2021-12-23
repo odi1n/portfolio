@@ -1,0 +1,3 @@
+from .language_inline import LanguageStackedInline
+from .social_inline import SocialStackedInline
+from .work_places_inline import WorkPlaceStackedInline
