@@ -14,13 +14,15 @@ services:
   backend:
     container_name: pr_backend
     restart: always
-    build: ./
+    build:
+      context: ./
+      dockerfile: Dockerfile.prod
 #    command: python manage.py runserver 0.0.0.0:8000
     command: gunicorn portfolio_generate.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/web/staticfiles/
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
     env_file:
       - .env.prod
     environment:
@@ -40,8 +42,8 @@ services:
       POSTGRES_HOST: '${POSTGRES_HOST}'
       POSTGRES_POST: '${POSTGRES_POST}'
       CONFIGS: "listen_addresses:'*',max_replication_slots:5"
-    ports:
-      - "5432:5432"
+    expose:
+      - 5432
     volumes:
       - ./data/postgres/:/var/lib/postgresql/data
       - ./data/shared/backups:/backups
