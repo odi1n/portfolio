@@ -17,3 +17,8 @@
 4. Запустить докер: `docker-compose up`
 5. Произвести миграцию: `python manage.py makemigrations`
 6. Мигрировать: `python manage.py migrate`
+
+Добавить к образу докера в файле docker-compose-*.yml опцию user, в которой указать UID и GID пользователя, от которого будет запускаться докер контейнер:
+```
+user: "3203:3203" # 3203 - user id / group id пользователя в системе
+```
