@@ -4,7 +4,8 @@ from .base import *
 SECRET_KEY = env.str('SECRET_KEY')
 
 # Static
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Debug
 DEBUG = env.bool('DEBUG')
