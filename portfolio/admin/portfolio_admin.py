@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.db import models
 from django.utils.html import format_html
 from django_json_widget.widgets import JSONEditorWidget
+from .inline import *
 from ..models import Portfolio
 
 
@@ -14,6 +15,8 @@ class PortfolioAdmin(admin.ModelAdmin):
                     'stack',
                     'generate_pdf_preview_html']
     list_filter = ['stack']
+    inlines = [WorkStackedInline,
+               ExperienceStackedInline]
     search_fields = ['user__username']
     formfield_overrides = {models.JSONField: {'widget': JSONEditorWidget}, }
 

@@ -6,10 +6,13 @@ SECRET_KEY = env.str('SECRET_KEY', default='abcdefghijklmnopqrstuvwxyz0123456789
 # Static
 # STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # STATICFILES_DIRS = [STATIC_DIR]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Debug
 DEBUG = env.bool('DEBUG', default=True)
+
+# TimeZone
+TIME_ZONE = env.str('TIME_ZONE', default='Europe/Moscow')
 
 # Allowed
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default='*')
