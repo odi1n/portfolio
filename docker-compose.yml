@@ -4,11 +4,14 @@ services:
   backend:
     container_name: pr_backend
     restart: always
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
+      - .:/home/app/portfolio
       - ./portfolio_generate/static/:/home/app/portfolio/portfolio_generate/static
     ports:
       - 8000:8000
