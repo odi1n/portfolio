@@ -1,22 +1,27 @@
+import transliterate
 from django.http import HttpResponse
-from django.template.loader import render_to_string
-from weasyprint import HTML
-import tempfile
 from django.views import View
+from django.contrib.auth.models import AnonymousUser
+from django.views.decorators.clickjacking import xframe_options_exempt
+
 from users.models import Social, Language, WorkPlace
-from ..models import Portfolio, Work, Experience, Tech
+from ..models import Portfolio, Work, Experience
 from ..models.type import CategoryType
 from ..service.generate_pdf import generate
-import transliterate
 
 
 class PortfolioView(View):
     template_name = "mytemplates.html"
 
+    @xframe_options_exempt
     def get(self, request, *args, **kwargs):
-        portfolio = Portfolio.objects.filter(id=kwargs.get('pk')).first()
+        if request.user == AnonymousUser():
+            return HttpResponse("error user auth")
+
+        portfolio = Portfolio.objects.filter(id=kwargs.get('pk'),
+                                             user=request.user).first()
         if portfolio is None:
-            return HttpResponse("error number portfokio")
+            return HttpResponse("error number portfolio")
 
         work = Work.objects.filter(portfolio=portfolio).first()
         experiences = Experience.objects.filter(portfolio=portfolio)
