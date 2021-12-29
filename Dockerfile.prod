@@ -28,3 +28,9 @@ COPY . /home/app/portfolio/
 
 WORKDIR /home/app/portfolio/
 RUN python manage.py collectstatic --noinput
+
+RUN apt-get update \
+    && apt-get -y install npm
+
+WORKDIR /home/app/portfolio
+RUN npm install
