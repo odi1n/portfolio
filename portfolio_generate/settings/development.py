@@ -6,7 +6,11 @@ SECRET_KEY = env.str('SECRET_KEY', default='abcdefghijklmnopqrstuvwxyz0123456789
 # Static
 # STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # STATICFILES_DIRS = [STATIC_DIR]
+STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Css - sass
+SASS_PROCESSOR_ROOT = STATIC_ROOT
 
 # Debug
 DEBUG = env.bool('DEBUG', default=True)

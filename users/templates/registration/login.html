@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+
+{% block title %}Авторизация{% endblock title %}
+
+{% block no_auth %}
+  <div id="login">
+    <div class="container">
+      <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+          <div id="login-box" class="col-md-12">
+            <form id="login-form" class="form" action="." method="post">
+              {% csrf_token %}
+              <h3 class="text-center text-info">Авторизация</h3>
+              {% for field in form %}
+                <div class="form-group">
+                  <label for="username" class="text-info">{{ field.label_tag }}</label><br>
+                  {{ field }}
+                </div>
+
+                <p>{{ error }}</p>
+
+                {% if field.errors %}
+                  {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+
+              {% endfor %}
+              <div class="form-group  m-0">
+                <div class="text-center  mb-2">
+                  <a href="{% url 'signup' %}" class="text-info">Регистрация</a>
+                </div>
+                <input type="submit" name="submit" class="btn btn-info btn-md w-100" value="Авторизоваться">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock no_auth %}
+
+{% block content %}
+  {{ user.username }}
+  <a href="{% url 'logout' %}">Выйти</a>
+{% endblock content %}

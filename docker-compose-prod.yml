@@ -26,6 +26,7 @@ services:
       - .env.prod
     environment:
       - POSTGRES_HOST=postgres
+      - TIME_ZONE=Europe/Moscow
     depends_on:
       - postgres
 
