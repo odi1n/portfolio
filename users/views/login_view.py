@@ -1,14 +1,20 @@
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.contrib.auth.models import AnonymousUser
+from django.shortcuts import render, HttpResponseRedirect
 
+from portfolio.models import Portfolio
 from ..forms import LoginForm
 from ..models import CustomUser
 
 
 def user_login(request):
     if request.method != 'POST':
-        form = LoginForm()
+        if request.user == AnonymousUser():
+            form = LoginForm()
+        else:
+            portfolios = Portfolio.objects.filter(user=request.user)
+            return render(request, 'registration/login.html', {"portfolios": portfolios})
     else:
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -17,7 +23,8 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return render(request, 'registration/login.html')
+                    return HttpResponseRedirect('/')
+                    # return render(request, 'registration/login.html', {})
                 else:
                     return HttpResponse('Disabled account')
             else:
