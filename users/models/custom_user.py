@@ -18,4 +18,4 @@ class CustomUser(AbstractUser):
                               choices=SexType.choices,
                               default=SexType.MALE)
     age = models.IntegerField(verbose_name="Возраст",
-                              default=20)
+                              default=0)
