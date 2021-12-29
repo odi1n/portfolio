@@ -5,7 +5,7 @@ services:
     container_name: pr_nginx
     build: ./nginx
     volumes:
-      - static_volume:/home/app/portfolio/portfolio_generate/static
+      - ./portfolio_generate/static:/home/app/portfolio/portfolio_generate/static
     ports:
       - 8010:80
     depends_on:
@@ -15,11 +15,12 @@ services:
     container_name: pr_backend
     restart: always
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile.prod
     command: bash -c "python manage.py migrate &&  gunicorn portfolio_generate.wsgi:application --bind 0.0.0.0:8000"
     volumes:
-      - static_volume:/home/app/portfolio/portfolio_generate/static
+      - .:/home/app/portfolio
+      - ./portfolio_generate/static:/home/app/portfolio/portfolio_generate/static
     expose:
       - 8000
     env_file:
