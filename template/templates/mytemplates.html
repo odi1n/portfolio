@@ -1,0 +1,284 @@
+{% load static %}
+{% load my_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Резюме - {{portfolio.user.first_name}} {{portfolio.user.last_name}}. {{ portfolio.get_stack_display }}</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+
+  <style type="text/css">
+    @page {
+      size: a4;
+      margin: 1.5cm 1.25cm;
+    }
+
+    @font-face {
+      font-family: Arial;
+      src: url("{% static " fonts/Arial.ttf " %}");
+    }
+
+    @font-face {
+      font-family: Maler;
+      src: url("{% static " fonts/Maler.ttf " %}");
+    }
+
+    @font-face {
+      font-family: Verdana;
+      src: url("{% static " fonts/Verdana.ttf " %}");
+    }
+
+
+    body {
+      font-weight: 200;
+      font-size: 14px;
+      color: #000000;
+    }
+
+    h1, h2, h3, h4, h5 {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    p, a {
+      margin: 0px;
+      padding: 0px;
+      font-size: 12px;
+      text-decoration: none;
+      color: #000000;
+    }
+
+    .hrItem {
+      border: none;
+      height: 1px;
+      color: #838383; /* old IE */
+      background-color: #838383; /* Modern Browsers */
+      margin: 10px 0;
+    }
+
+    .hrTable {
+      border: none;
+      height: 1px;
+      color: #f1f1f1; /* old IE */
+      background-color: #F1F1F1FF; /* Modern Browsers */
+      margin: 20px 0;
+    }
+
+    .header {
+      font-size: 20px;
+      font-weight: 100;
+      text-align: left;
+    }
+
+    .stack {
+      margin-bottom: 10px;
+    }
+
+    .experience {
+      font-size: 12px;
+    }
+
+    .knowledge {
+      padding-top: 30px;
+      font-size: 10px;
+    }
+
+    .item {
+      margin-bottom: 15px;
+    }
+
+    tr, td {
+      font-size: 10px;
+    }
+
+    .heading {
+      font-weight: bold;
+      font-size: 12px;
+      padding-right: 50px;
+    }
+
+    .test2 {
+      padding-bottom: 10px;
+    }
+
+    .test {
+      font-size: 10px;
+    }
+
+    .test3 {
+      padding-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='header'>
+    <h2 class="stack">{{portfolio.user.first_name}} {{portfolio.user.last_name}}. {{ portfolio.get_stack_display }}</h2>
+    <h3 class="experience">Возраст: {{portfolio.user.age}}. Опыт работы c: {{ portfolio.experience_with.year }}.</h3>
+  </div>
+  <hr class="hrItem">
+
+  {% if portfolio.setting.portfolio == True %}
+  <div class="about-me">
+    <div>
+      <p>ФИО:
+        <span>{{portfolio.user.first_name}} {{portfolio.user.last_name}} {{portfolio.user.middle_name}}</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Пол:
+        <span>{{portfolio.user.get_sex_display}}</span>
+      </p>
+    </div>
+
+    <div class="item">
+      <p>Возраст:
+        <span>{{portfolio.user.age}} лет</span>
+      </p>
+    </div>
+
+    <div class="item">
+      {% for social in socials %}
+      <p>{{social.social_type}}: <span>{{social.values}}</span></p>
+      {% endfor%}
+    </div>
+
+    <!--    <div class="item" style="display: flex">-->
+    <!--      <p style="margin-right: 10px">Репозиторий:</p>-->
+    <!--      <div style="display: flex; width: 95%; flex-wrap: wrap">-->
+    <!--        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://github.com/</a>-->
+    <!--        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://gitlab.com/</a>-->
+    <!--        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://bitbucket.org/</a>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <!--    <div>-->
+    <!--      <p>Образование:</p>-->
+
+    <!--      <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">-->
+    <!--        <li>ДонНТУ - Компьютерных наук и технологий. Сентябрь 2018 - По настоящее время(3 года 1 месяц)</li>-->
+    <!--      </ol>-->
+    <!--    </div>-->
+
+    <div class="item">
+      <p>Знание языков:</p>
+      <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+        {% for language in languages %}
+        <li>{{language.language_type}} - {{language.text}}</li>
+        {%endfor%}
+      </ol>
+    </div>
+
+    <div>
+      <p>Опыт работы:</p>
+
+      <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+        {% for work_place in work_places%}
+        <li>{{work_place|work_place_tags}} </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <hr class="hrItem">
+  {%endif%}
+
+  {% if portfolio.setting.work_places == True %}
+  <div class="about-me">
+    <div>
+      <p>Грейд:
+        <span>{{work.grade}}</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Желаемая зарплата:
+        <span>{{work.salary}}Р</span>
+      </p>
+    </div>
+
+    <div class="item">
+      <p>Желаемая должность:
+        <span>{{work.post}}</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Время в пути до работы:
+        <span>{{work.travel_time}}</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Занятость:
+        <span>{{work.employment}}</span>
+      </p>
+    </div>
+
+
+    <div>
+      <p>График работы:</p>
+      <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+        <li>{{work.get_schedule_display}}</li>
+      </ol>
+    </div>
+
+  </div>
+  <hr class="hrItem">
+  {%endif%}
+
+  <div class="skills">
+    {% for tech in techs %}
+    <div class="item">
+      <p>{{tech.label}}:</p>
+      <p>{{tech.params|join:', '}}</p>
+    </div>
+
+    {%endfor%}
+  </div>
+  <hr class="hrItem">
+
+  <div class='example-works'>
+    <h2 class="stack">Опыт</h2>
+    <div>
+      {% for experience in experiences %}
+      {% if experience.is_enabled %}
+      <table border="1">
+        <tr>
+          <th class="heading test2">Проект</th>
+          <th class="heading test2">
+            {% if experience.project.link %}
+            <a href="{{experience.project.link}}">{{experience.project.title}}</a>
+            {%else%}
+            <span>{{experience.project.title}}</span>
+            {% endif %}
+          </th>
+        </tr>
+        <tr>
+          <td class="heading test2">Описание</td>
+          <td class="test2">
+            {%if experience.project.description%}
+            <span>{{experience.project.description}}</span>
+            <br>
+            <br>
+            {%endif%}
+            <span>{{experience.description}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading">Технологии</td>
+          <td class="test">{{ experience.project.tech.all|dict_join }}</td>
+        </tr>
+      </table>
+      <hr class="hrTable">
+      {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
