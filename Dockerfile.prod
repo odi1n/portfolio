@@ -33,4 +33,5 @@ RUN apt-get update \
     && apt-get -y install npm
 
 WORKDIR /home/app/portfolio
-RUN npm install
+RUN npm install --global yarn \
+    && yarn install
