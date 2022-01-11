@@ -16,12 +16,15 @@ class PortfolioView(View):
     @xframe_options_exempt
     def get(self, request, *args, **kwargs):
         if request.user == AnonymousUser():
-            return HttpResponse("error user auth")
+            return HttpResponse("Error user auth")
 
-        portfolio = Portfolio.objects.filter(id=kwargs.get('pk'),
-                                             user=request.user).first()
+        if request.user.is_staff:
+            portfolio = Portfolio.objects.filter(id=kwargs.get('pk')).first()
+        else:
+            portfolio = Portfolio.objects.filter(id=kwargs.get('pk'),
+                                                 user=request.user).first()
         if portfolio is None:
-            return HttpResponse("error number portfolio")
+            return HttpResponse("Error number portfolio")
 
         work = Work.objects.filter(portfolio=portfolio).first()
         experiences = Experience.objects.filter(portfolio=portfolio)
