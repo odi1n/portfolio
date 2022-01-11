@@ -51,11 +51,11 @@
 
         <div class="row">
           {% for portfolio in portfolios %}
-            <div class="col-md-4">
+            <div class="col-md-6 col-lg-4">
               <div class="card mb-4 shadow-sm">
                 <embed src="{% url 'portfolio' portfolio.id %}" height="500px"/>
                 <div class="card-body p-2">
-                  <div class="d-flex justify-content-start align-items-center">
+                  <div class="d-flex justify-content-start align-items-center button-my">
                     <a href="{% url 'portfolio' portfolio.id %}"
                        type="button"
                        target="_blank"
