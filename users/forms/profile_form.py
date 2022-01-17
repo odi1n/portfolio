@@ -31,4 +31,4 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'middle_name')
+        fields = ('last_name', 'first_name', 'middle_name')
