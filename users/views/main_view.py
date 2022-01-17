@@ -24,5 +24,7 @@ class MainView(View):
             user.first_name = forms.cleaned_data['first_name']
             user.last_name = forms.cleaned_data['last_name']
             user.middle_name = forms.cleaned_data['middle_name']
+            user.sex = forms.cleaned_data['sex']
+            user.age = forms.cleaned_data['age']
             user.save()
         return redirect('profile')

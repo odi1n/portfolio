@@ -1,6 +1,7 @@
 from django import forms
 
 from ..models import CustomUser
+from ..models.type import SexType
 
 
 class ProfileForm(forms.ModelForm):
@@ -28,7 +29,16 @@ class ProfileForm(forms.ModelForm):
                                       'placeholder': 'Иванов',
                                       'class': 'form-control'
                                   }))
+    sex = forms.CharField(label="Пол",
+                          widget=forms.Select(attrs={
+                              'class': 'form-control'
+                          }, choices=SexType.choices))
+    age = forms.CharField(label="Возраст",
+                          widget=forms.NumberInput(attrs={
+                              'class': 'form-control',
+                              'type': 'number'
+                          }))
 
     class Meta:
         model = CustomUser
-        fields = ('last_name', 'first_name', 'middle_name')
+        fields = ('last_name', 'first_name', 'middle_name', 'sex', 'age')
