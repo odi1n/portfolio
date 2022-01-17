@@ -27,7 +27,7 @@
   <header>
     <nav class="navbar navbar-expand navbar-dark fixed-top bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">Генератор портфолио</a>
+        <a class="navbar-brand" href="{% url 'login' %}">Генератор портфолио</a>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
@@ -38,7 +38,9 @@
             <ul class="navbar-nav mr-auto">
               {% if user.is_superuser %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/admin" target="_blank">Админ-панель</a>
+                  <a class="nav-link"
+                     href="/admin"
+                     target="_blank">Админ-панель</a>
                 </li>
               {% endif %}
               <li class="nav-item dropdown">
@@ -47,7 +49,7 @@
                   {{ user.username }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Профиль</a>
+                  <a class="dropdown-item" href="{% url 'profile' %}">Профиль</a>
                   <a class="dropdown-item" href="{% url 'logout' %}">Выход</a>
                 </div>
               </li>

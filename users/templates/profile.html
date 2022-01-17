@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль{% endblock title %}
+
+{% block content %}
+  <main class="container pt-5">
+    <div class="pt-5">
+      <div class="shadow-box">
+        <h3>Профиль</h3>
+        <form method="post" action=".">
+          {% for field in forms %}
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="text-info">{{ field.label_tag }}</label><br>
+              {{ field }}
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary w-100">Изменить</button>
+        </form>
+      </div>
+    </div>
+  </main>
+{% endblock content %}
