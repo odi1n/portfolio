@@ -68,10 +68,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'portfolio_generate.urls'
 
+print("qsxqwe", os.path.join(BASE_DIR.resolve().parent, 'template', 'templates'))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'portfolio/templates'],
+        'DIRS': [
+            os.path.join(BASE_DIR.resolve().parent, 'template', 'templates'),
+            os.path.join(BASE_DIR.resolve().parent, 'users', 'templates'),
+            os.path.join(BASE_DIR.resolve().parent, 'portfolio', 'templates')
+        ],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,4 +157,4 @@ SASS_PRECISION = 8
 
 # Auth - Login
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/' # new
+LOGOUT_REDIRECT_URL = '/'  # new

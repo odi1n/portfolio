@@ -12,10 +12,12 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['id',
                     'email',
                     'username',
-                    'first_name', 'last_name',
+                    'first_name',
+                    'last_name',
                     'age',
                     'is_active',
                     'is_superuser',
+                    'last_career_meeting',
                     'last_login',
                     'date_joined']
     list_display_links = ['id',
@@ -27,6 +29,9 @@ class CustomUserAdmin(UserAdmin):
             'fields': ['username',
                        'email',
                        'password']
+        }),
+        (('Работа'), {
+            'fields': ['last_career_meeting']
         }),
         [('Персональные данные'), {
             'fields': ['last_name',
