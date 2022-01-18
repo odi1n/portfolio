@@ -28,6 +28,10 @@ body {
 }
 
 @media (max-width: 567px) {
+    .main {
+        margin-top: 3rem;
+        padding-bottom: 1rem;
+    }
     .container {
         flex-direction: column;
         align-items: center;

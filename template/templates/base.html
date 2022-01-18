@@ -29,11 +29,7 @@
       <div class="container">
         <a class="navbar-brand" href="{% url 'login' %}">Генератор портфолио</a>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-
-          </ul>
-
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
           <div class="mt-2 mt-md-0">
             <ul class="navbar-nav mr-auto">
               {% if user.is_superuser %}

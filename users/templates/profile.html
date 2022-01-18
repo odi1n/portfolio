@@ -3,10 +3,11 @@
 {% block title %}Профиль{% endblock title %}
 
 {% block content %}
-  <main class="container pt-5">
+  <main class="container pt-5 main">
     <div class="pt-5">
       <div class="shadow-box">
         <h3 class="pb-2">Профиль</h3>
+        <hr>
         <form method="post" action="." class="row">
           {% for field in forms %}
             {% csrf_token %}
