@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Humanize
+    'django.contrib.humanize',
+
     # css - sass
     'sass_processor',
 
@@ -68,7 +71,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'portfolio_generate.urls'
 
-print("qsxqwe", os.path.join(BASE_DIR.resolve().parent, 'template', 'templates'))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

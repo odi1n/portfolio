@@ -1,5 +1,6 @@
 {% load static %}
 {% load my_tags %}
+{% load humanize %}
 
 <!DOCTYPE html>
 <html>
@@ -197,7 +198,7 @@
       {% if work.salary %}
         <div>
           <p>Желаемая зарплата:
-            <span>{{ work.salary }}Р</span>
+            <span>{{ work.salary|intcomma }}₽</span>
           </p>
         </div>
       {% endif %}
