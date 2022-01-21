@@ -24,4 +24,4 @@ class Portfolio(models.Model):
         verbose_name_plural = 'Портфолио'
 
     def __str__(self):
-        return f'{self.user} - {self.stack}'
+        return f'{self.user} - {self.get_stack_display()}'
