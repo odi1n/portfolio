@@ -4,3 +4,4 @@ from .social_type import SocialType
 from .work_places import WorkPlace
 from .language_type import LanguageType
 from .language import Language
+from .education import Education

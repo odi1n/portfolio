@@ -141,48 +141,52 @@
           <span>{{ portfolio.user.age }} лет</span>
         </p>
       </div>
-
-      <div class="item">
-        {% for social in socials %}
-          <p>{{ social.social_type }}: <span>{{ social.values }}</span></p>
-        {% endfor %}
-      </div>
-
-      <!--    <div class="item" style="display: flex">-->
-      <!--      <p style="margin-right: 10px">Репозиторий:</p>-->
-      <!--      <div style="display: flex; width: 95%; flex-wrap: wrap">-->
-      <!--        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://github.com/</a>-->
-      <!--        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://gitlab.com/</a>-->
-      <!--        <a href="https://github.com/" target="_blank" style="margin-right: 10px;">https://bitbucket.org/</a>-->
-      <!--      </div>-->
-      <!--    </div>-->
-
-      <!--    <div>-->
-      <!--      <p>Образование:</p>-->
-
-      <!--      <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">-->
-      <!--        <li>ДонНТУ - Компьютерных наук и технологий. Сентябрь 2018 - По настоящее время(3 года 1 месяц)</li>-->
-      <!--      </ol>-->
-      <!--    </div>-->
-
-      <div class="item">
-        <p>Знание языков:</p>
-        <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
-          {% for language in languages %}
-            <li>{{ language.language_type }} - {{ language.text }}</li>
+      {% if portfolio.user.social_set.exists %}
+        <div class="item">
+          {% for social in portfolio.user.social_set.all %}
+            <p>{{ social.social_type }}: <span>{{ social.values }}</span></p>
           {% endfor %}
-        </ol>
-      </div>
+        </div>
+      {% endif %}
 
-      <div>
-        <p>Опыт работы:</p>
+      {% if portfolio.user.education_set.exists %}
+        <div class="item">
+          <p>Образование:</p>
+          <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+            {% for education in portfolio.user.education_set.all %}
+              <li>{{ education }}. {{ education.date_start|date:"d b Y" }} -
+                {% if education.date_end %}
+                  {{ education.date_end|date:"d b Y" }}
+                {% else %}
+                  По текущий момент
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      {% endif %}
 
-        <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
-          {% for work_place in work_places %}
-            <li>{{ work_place|work_place_tags }} </li>
-          {% endfor %}
-        </ol>
-      </div>
+      {% if portfolio.user.language_set.exists %}
+        <div class="item">
+          <p>Знание языков:</p>
+          <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+            {% for language in portfolio.user.language_set.all %}
+              <li>{{ language.language_type }} - {{ language.text }}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      {% endif %}
+
+      {% if portfolio.user.workplace_set.exists %}
+        <div>
+          <p>Опыт работы:</p>
+          <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+            {% for work_place in portfolio.user.workplace_set.all %}
+              <li>{{ work_place|work_place_tags }} </li>
+            {% endfor %}
+          </ol>
+        </div>
+      {% endif %}
     </div>
     <hr class="hrItem">
   {% endif %}

@@ -8,7 +8,8 @@ from ..models import CustomUser
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     search_fields = ['email',
-                     'username', ]
+                     'username',
+                     'first_name']
     list_display = ['id',
                     'email',
                     'username',
@@ -63,6 +64,3 @@ class CustomUserAdmin(UserAdmin):
                SocialStackedInline,
                WorkPlaceStackedInline]
     ordering = ('-date_joined',)
-    search_fields = ['email',
-                     'username',
-                     'first name']

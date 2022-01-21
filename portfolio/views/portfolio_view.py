@@ -30,8 +30,6 @@ class PortfolioView(View):
         experiences = Experience.objects.filter(portfolio=portfolio)
 
         socials = Social.objects.filter(user=portfolio.user)
-        languages = Language.objects.filter(user=portfolio.user)
-        work_places = WorkPlace.objects.filter(user=portfolio.user)
 
         categorys = [CategoryType.PROJRAMS_LANGUAGE, CategoryType.FRAMEWORK,
                      CategoryType.LIBRARIES, CategoryType.DBMS, CategoryType.CLOUD_SERVICE,
@@ -48,14 +46,8 @@ class PortfolioView(View):
 
         context = {
             "portfolio": portfolio,
-            "socials": socials,
-            "languages": languages,
-            "work_places": work_places,
-
             "work": work,
-
             "techs": techs,
-
             "experiences": experiences,
         }
 
