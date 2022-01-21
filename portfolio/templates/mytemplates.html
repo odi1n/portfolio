@@ -14,6 +14,13 @@
     @page {
       size: a4;
       margin: 1.5cm 1.25cm;
+
+      /*Нумерация страниц*/
+      @bottom-right {
+        font-size: 12px;
+        color: #333333;
+        content: counter(page);
+      }
     }
 
     @font-face {
@@ -30,16 +37,6 @@
       font-family: Verdana;
       src: url("{% static " fonts/Verdana.ttf " %}");
     }
-
-    /*Нумерация страниц*/
-    @page {
-      @bottom-right {
-        font-size: 12px;
-        color: #333333;
-        content: counter(page);
-      }
-    }
-
 
     body {
       font-weight: 200;
@@ -90,11 +87,6 @@
       font-size: 12px;
     }
 
-    .knowledge {
-      padding-top: 30px;
-      font-size: 10px;
-    }
-
     .item {
       margin-bottom: 15px;
     }
@@ -116,11 +108,6 @@
     .test {
       font-size: 10px;
     }
-
-    .test3 {
-      padding-bottom: 10px;
-    }
-
   </style>
 </head>
 <body>
