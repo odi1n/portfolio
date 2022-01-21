@@ -31,6 +31,14 @@
       src: url("{% static " fonts/Verdana.ttf " %}");
     }
 
+    /*Нумерация страниц*/
+    @page {
+      @bottom-right {
+        font-size: 12px;
+        content: counter(page);
+      }
+    }
+
 
     body {
       font-weight: 200;
