@@ -9,7 +9,8 @@ from ..models import CustomUser
 class CustomUserAdmin(UserAdmin):
     search_fields = ['email',
                      'username',
-                     'first_name']
+                     'first_name',
+                     'last_name']
     list_display = ['id',
                     'email',
                     'username',
@@ -21,8 +22,13 @@ class CustomUserAdmin(UserAdmin):
                     'last_career_meeting',
                     'last_login',
                     'date_joined']
+    list_filter = ['is_staff',
+                   'is_active',
+                   'is_superuser',
+                   'last_career_meeting']
     list_display_links = ['id',
-                          'email', ]
+                          'email',
+                          'username']
     filter_horizontal = ['groups',
                          'user_permissions']
     fieldsets = [
@@ -50,7 +56,7 @@ class CustomUserAdmin(UserAdmin):
         }],
         [('Время'), {
             'fields': (('last_login',
-                       'date_joined'),)
+                        'date_joined'),)
         }],
     ]
 
