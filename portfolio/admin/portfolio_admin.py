@@ -15,6 +15,7 @@ class PortfolioAdmin(admin.ModelAdmin):
                     'stack',
                     'generate_pdf_preview_html']
     list_filter = ['stack']
+    list_display_links = ['id', 'user']
     inlines = [WorkStackedInline,
                ExperienceStackedInline]
     search_fields = ['user__username']

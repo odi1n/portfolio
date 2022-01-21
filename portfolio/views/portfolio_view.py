@@ -62,5 +62,5 @@ class PortfolioView(View):
         return generate(templates=self.template_name,
                         context=context,
                         data=transliterate.translit(
-                            f'Резюме - {portfolio.user.first_name} {portfolio.user.last_name}. {portfolio.get_stack_display()}',
+                            f'Резюме - {portfolio.user.get_name}. {portfolio.get_stack_display()}',
                             reversed=True))
