@@ -8,7 +8,9 @@ from ..models import CustomUser
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     search_fields = ['email',
-                     'username', ]
+                     'username',
+                     'first_name',
+                     'last_name']
     list_display = ['id',
                     'email',
                     'username',
@@ -20,8 +22,13 @@ class CustomUserAdmin(UserAdmin):
                     'last_career_meeting',
                     'last_login',
                     'date_joined']
+    list_filter = ['is_staff',
+                   'is_active',
+                   'is_superuser',
+                   'last_career_meeting']
     list_display_links = ['id',
-                          'email', ]
+                          'email',
+                          'username']
     filter_horizontal = ['groups',
                          'user_permissions']
     fieldsets = [
@@ -34,11 +41,11 @@ class CustomUserAdmin(UserAdmin):
             'fields': ['last_career_meeting']
         }),
         [('Персональные данные'), {
-            'fields': ['last_name',
-                       'first_name',
-                       'middle_name',
+            'fields': (('last_name',
+                        'first_name',
+                        'middle_name',),
                        'sex',
-                       'age', ],
+                       'age',),
         }],
         [('Доступ'), {
             'fields': ['is_active',
@@ -48,8 +55,8 @@ class CustomUserAdmin(UserAdmin):
                        'user_permissions'],
         }],
         [('Время'), {
-            'fields': ['last_login',
-                       'date_joined']
+            'fields': (('last_login',
+                        'date_joined'),)
         }],
     ]
 
@@ -61,8 +68,6 @@ class CustomUserAdmin(UserAdmin):
     )
     inlines = [LanguageStackedInline,
                SocialStackedInline,
-               WorkPlaceStackedInline]
+               WorkPlaceStackedInline,
+               EducationStackedInline]
     ordering = ('-date_joined',)
-    search_fields = ['email',
-                     'username',
-                     'first name']

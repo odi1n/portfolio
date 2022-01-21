@@ -4,7 +4,6 @@ from django.views import View
 from django.contrib.auth.models import AnonymousUser
 from django.views.decorators.clickjacking import xframe_options_exempt
 
-from users.models import Social, Language, WorkPlace
 from ..models import Portfolio, Work, Experience
 from ..models.type import CategoryType
 from ..service.generate_pdf import generate
@@ -29,10 +28,6 @@ class PortfolioView(View):
         work = Work.objects.filter(portfolio=portfolio).first()
         experiences = Experience.objects.filter(portfolio=portfolio)
 
-        socials = Social.objects.filter(user=portfolio.user)
-        languages = Language.objects.filter(user=portfolio.user)
-        work_places = WorkPlace.objects.filter(user=portfolio.user)
-
         categorys = [CategoryType.PROJRAMS_LANGUAGE, CategoryType.FRAMEWORK,
                      CategoryType.LIBRARIES, CategoryType.DBMS, CategoryType.CLOUD_SERVICE,
                      CategoryType.OTHER, CategoryType.DEVELOPMENT_TOOL, CategoryType.APP_TYPE]
@@ -48,14 +43,8 @@ class PortfolioView(View):
 
         context = {
             "portfolio": portfolio,
-            "socials": socials,
-            "languages": languages,
-            "work_places": work_places,
-
             "work": work,
-
             "techs": techs,
-
             "experiences": experiences,
         }
 
