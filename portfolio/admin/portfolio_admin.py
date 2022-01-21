@@ -13,8 +13,10 @@ class PortfolioAdmin(admin.ModelAdmin):
     list_display = ['id',
                     'user',
                     'stack',
+                    'experience_with',
                     'generate_pdf_preview_html']
-    list_filter = ['stack']
+    list_filter = ['stack',
+                    'experience_with']
     list_display_links = ['id', 'user']
     inlines = [WorkStackedInline,
                ExperienceStackedInline]
