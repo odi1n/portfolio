@@ -23,3 +23,9 @@ class CustomUser(AbstractUser):
                               default=SexType.MALE)
     age = models.IntegerField(verbose_name="Возраст",
                               default=0)
+
+    def get_full_name(self):
+        return f'{self.last_name} {self.first_name} {self.middle_name}'
+
+    def get_name(self):
+        return f'{self.last_name} {self.first_name}'

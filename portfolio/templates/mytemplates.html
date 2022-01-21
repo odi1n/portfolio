@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Резюме - {{portfolio.user.first_name}} {{portfolio.user.last_name}}. {{ portfolio.get_stack_display }}</title>
+  <title>Резюме - {{portfolio.user.get_name}}. {{ portfolio.get_stack_display }}</title>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="UTF-8">
@@ -116,7 +116,7 @@
 <body>
 <div class='wrapper'>
   <div class='header'>
-    <h2 class="stack">{{portfolio.user.first_name}} {{portfolio.user.last_name}}. {{ portfolio.get_stack_display }}</h2>
+    <h2 class="stack">{{portfolio.user.get_name}}. {{ portfolio.get_stack_display }}</h2>
     <h3 class="experience">Возраст: {{portfolio.user.age}}. Опыт работы c: {{ portfolio.experience_with.year }}.</h3>
   </div>
   <hr class="hrItem">
@@ -125,7 +125,7 @@
   <div class="about-me">
     <div>
       <p>ФИО:
-        <span>{{portfolio.user.first_name}} {{portfolio.user.last_name}} {{portfolio.user.middle_name}}</span>
+        <span>{{portfolio.user.get_full_name}}</span>
       </p>
     </div>
 
