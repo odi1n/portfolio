@@ -16,6 +16,6 @@ class ExperienceAdmin(admin.ModelAdmin):
         }),
         ('Дата работы над проектом', {
             'classes': ('collapse',),
-            'fields': ('started', 'completed'),
+            'fields': (('started', 'completed'),),
         }),
     )
