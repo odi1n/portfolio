@@ -16,7 +16,6 @@ class Experience(models.Model):
     is_enabled = models.BooleanField(verbose_name="Выводить",
                                      default=True)
     started = models.DateField(verbose_name="Приступил к проекту",
-                               default=datetime.date.today,
                                null=True,
                                blank=True)
     completed = models.DateField(verbose_name="Завершил работу над проектом",
