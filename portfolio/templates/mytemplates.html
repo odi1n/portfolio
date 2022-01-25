@@ -251,44 +251,59 @@
   </div>
   <hr class="hrItem">
 
-  <div class='example-works'>
-    <h2 class="stack">Опыт</h2>
-    <div>
-      {% for experience in experiences %}
-        {% if experience.is_enabled %}
-          <table border="1">
-            <tr>
-              <th class="heading test2">Проект</th>
-              <th class="heading test2">
-                {% if experience.project.link %}
-                  <a href="{{ experience.project.link }}">{{ experience.project.title }}</a>
-                {% else %}
-                  <span>{{ experience.project.title }}</span>
-                {% endif %}
-              </th>
-            </tr>
-            <tr>
-              <td class="heading test2">Описание</td>
-              <td class="test2">
-                {% if experience.project.description %}
-                  <span>{{ experience.project.description }}</span>
-                  <br>
-                  <br>
-                {% endif %}
-                <span>{{ experience.description }}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="heading">Технологии</td>
-              <td class="test">{{ experience.project.tech.all|dict_join }}</td>
-            </tr>
-          </table>
-          <hr class="hrTable">
-        {% endif %}
-      {% endfor %}
-    </div>
+  {% if experiences %}
+    <div class='example-works'>
+      <h2 class="stack">Опыт</h2>
+      <div>
+        {% for experience in experiences %}
+          {% if experience.is_enabled %}
+            <table border="1">
+              <tr>
+                <th class="heading test2">Проект</th>
+                <th class="heading test2">
+                  {% if experience.project.link %}
+                    <a href="{{ experience.project.link }}">{{ experience.project.title }}</a>
+                  {% else %}
+                    <span>{{ experience.project.title }}</span>
+                  {% endif %}
+                </th>
+              </tr>
+              <tr>
+                <td class="heading test2">Описание</td>
+                <td class="test2">
+                  {% if experience.project.description %}
+                    <span>{{ experience.project.description }}</span>
+                    <br>
+                    <br>
+                  {% endif %}
+                  <span>{{ experience.description }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="heading test2">Технологии</td>
+                <td class="test test2">{{ experience.project.tech.all|dict_join }}</td>
+              </tr>
 
-  </div>
+              {% if experience.started is not None %}
+                <tr>
+                  <td class="heading">Работал</td>
+                  <td>C {{ experience.started|date:"d b Y" }} -
+                    {% if experience.completed %}
+                      по: {{ experience.completed|date:"d b Y" }}
+                    {% else %}
+                      По текущий момент
+                    {% endif %}</td>
+                </tr>
+              {% endif %}
+
+            </table>
+            <hr class="hrTable">
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+  {% endif %}
 </div>
 </body>
 </html>

@@ -20,5 +20,5 @@ def work_place_tags(qs):
     if qs.date_end is  None:
         value = f'По текущий момент'
     elif qs.date_end is not None:
-        value = qs.date_end.strftime("%d %B %Y")
-    return f'{qs.text} - {qs.whom}. {qs.date_start.strftime("%d %B %Y")} - {value}'
+        value = qs.date_end.strftime("%d %b %Y")
+    return f'{qs.text} - {qs.whom}. {qs.date_start.strftime("%d %b %Y")} - {value}'

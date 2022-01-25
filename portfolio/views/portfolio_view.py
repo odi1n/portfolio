@@ -28,28 +28,25 @@ class PortfolioView(View):
         work = Work.objects.filter(portfolio=portfolio).first()
         experiences = Experience.objects.filter(portfolio=portfolio)
 
-        categorys = [CategoryType.PROJRAMS_LANGUAGE, CategoryType.FRAMEWORK,
-                     CategoryType.LIBRARIES, CategoryType.DBMS, CategoryType.CLOUD_SERVICE,
-                     CategoryType.OTHER, CategoryType.DEVELOPMENT_TOOL, CategoryType.APP_TYPE]
+        categories = [CategoryType.PROJRAMS_LANGUAGE, CategoryType.FRAMEWORK,
+                      CategoryType.LIBRARIES, CategoryType.DBMS, CategoryType.CLOUD_SERVICE,
+                      CategoryType.OTHER, CategoryType.DEVELOPMENT_TOOL, CategoryType.APP_TYPE]
         techs = []
-        for category in categorys:
-            portf = Portfolio.objects.filter(tech__category=category,
-                                             user=portfolio.user).order_by('tech')
-            if portf.count() > 0:
-                techs.append({
-                    "label": category.label,
-                    "params": portf.values_list('tech__text', flat=True)
-                })
-
-        context = {
-            "portfolio": portfolio,
-            "work": work,
-            "techs": techs,
-            "experiences": experiences,
-        }
+        for category in categories:
+            portfolio_data = Portfolio.objects.filter(tech__category=category,
+                                                      user=portfolio.user,
+                                                      id=portfolio.id).order_by('tech')
+            if portfolio_data.count() > 0:
+                techs.append({"label": category.label,
+                              "params": portfolio_data.values_list('tech__text', flat=True)})
 
         return generate(templates=self.template_name,
-                        context=context,
+                        context={
+                            "portfolio": portfolio,
+                            "work": work,
+                            "techs": techs,
+                            "experiences": experiences,
+                        },
                         data=transliterate.translit(
                             f'Резюме - {portfolio.user.get_name}. {portfolio.get_stack_display()}',
                             reversed=True))

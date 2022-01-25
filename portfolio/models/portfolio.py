@@ -9,6 +9,10 @@ def sett_def():
 
 
 class Portfolio(models.Model):
+    name = models.CharField(verbose_name="Название",
+                            max_length=255,
+                            blank=True,
+                            null=True)
     user = models.ForeignKey("users.CustomUser",
                              verbose_name="Пользователь",
                              on_delete=models.CASCADE)
@@ -26,4 +30,6 @@ class Portfolio(models.Model):
         verbose_name_plural = 'Портфолио'
 
     def __str__(self):
+        if self.name is not None:
+            return f'{self.user} - {self.name}'
         return f'{self.user} - {self.get_stack_display()}'
