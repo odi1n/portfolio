@@ -116,27 +116,12 @@
     <h2 class="stack">{{ portfolio.user.get_name }}. {{ portfolio.get_stack_display }}</h2>
     <h3 class="experience">Возраст: {{ portfolio.user.age }}. Опыт работы c: {{ portfolio.experience_with.year }}.</h3>
   </div>
+
   <hr class="hrItem">
 
   {% if portfolio.setting.portfolio == True %}
     <div class="about-me">
-      <div>
-        <p>ФИО:
-          <span>{{ portfolio.user.get_full_name }}</span>
-        </p>
-      </div>
 
-      <div>
-        <p>Пол:
-          <span>{{ portfolio.user.get_sex_display }}</span>
-        </p>
-      </div>
-
-      <div class="item">
-        <p>Возраст:
-          <span>{{ portfolio.user.age }} лет</span>
-        </p>
-      </div>
       {% if portfolio.user.social_set.exists %}
         <div class="item">
           {% for social in portfolio.user.social_set.all %}
@@ -189,11 +174,13 @@
 
   {% if portfolio.setting.work_places == True %}
     <div class="about-me">
-      <div>
-        <p>Грейд:
-          <span>{{ work.grade }}</span>
-        </p>
-      </div>
+      {% if work.grade %}
+        <div>
+          <p>Грейд:
+            <span>{{ work.grade }}</span>
+          </p>
+        </div>
+      {% endif %}
 
       {% if work.salary %}
         <div>
@@ -229,10 +216,9 @@
 
       {% if work.schedule is not None %}
         <div>
-          <p>График работы:</p>
-          <ul style="margin: 0px 35px; padding: 0px; font-size: 12px">
-            <li>{{ work.get_schedule_display }}</li>
-          </ul>
+          <p>График работы:
+            <span>{{ work.get_schedule_display }}</span>
+          </p>
         </div>
       {% endif %}
 
