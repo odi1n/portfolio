@@ -31,5 +31,5 @@ class Portfolio(models.Model):
 
     def __str__(self):
         if self.name is not None:
-            return f'{self.user} - {self.name}'
-        return f'{self.user} - {self.get_stack_display()}'
+            return f'{self.name}'
+        return f'{self.get_stack_display()}'

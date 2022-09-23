@@ -75,9 +75,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR.resolve().parent, 'template', 'templates'),
-            os.path.join(BASE_DIR.resolve().parent, 'users', 'templates'),
-            os.path.join(BASE_DIR.resolve().parent, 'portfolio', 'templates')
+            os.path.join(BASE_DIR.resolve().parent, 'templates'),
         ],
 
         'APP_DIRS': True,
@@ -130,7 +128,7 @@ LANGUAGE_CODE = 'ru-RU'
 TIME_ZONE = 'Europe/Moscow'
 USE_I18N = True
 USE_L10N = False
-USE_TZ = False
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

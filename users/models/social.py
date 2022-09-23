@@ -14,8 +14,8 @@ class Social(models.Model):
                               max_length=255)
 
     class Meta:
-        verbose_name = "Социальные"
-        verbose_name_plural = 'Социальные'
+        verbose_name = "Соц. сети"
+        verbose_name_plural = 'Соц. сети'
         ordering = ['social_type']
 
     def __str__(self):
