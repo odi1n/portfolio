@@ -26,8 +26,7 @@ class Experience(models.Model):
     class Meta:
         verbose_name = "Опыт"
         verbose_name_plural = 'Опыт'
-        ordering = ['portfolio',
-                    'project__title']
+        ordering = ('-started',)
 
     def __str__(self):
         return f'Проект: {self.project}, описание: {self.description[:150]}...'
