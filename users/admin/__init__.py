@@ -4,3 +4,4 @@ from .social_type_admin import SocialTypeAdmin
 from .work_places_admin import WorkPlaceAdmin
 from .language_admin import LanguageAdmin
 from .language_type_admin import LanguageTypeAdmin
+from .education_admin import EducationAdmin

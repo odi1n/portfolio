@@ -6,4 +6,4 @@ from ...models import WorkPlace
 class WorkPlaceStackedInline(admin.StackedInline):
     model = WorkPlace
     classes = ['collapse']
-    extra = 1
+    extra = 0

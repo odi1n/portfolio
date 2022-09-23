@@ -9,4 +9,15 @@ class ExperienceAdmin(admin.ModelAdmin):
     list_display = ['portfolio',
                     'project',
                     'description',
-                    'is_enabled']
+                    'is_enabled',
+                    'started',
+                    'completed']
+    fieldsets = (
+        ('Настройки', {
+            'fields': ('portfolio', 'project', 'description', 'is_enabled')
+        }),
+        ('Дата работы над проектом', {
+            'classes': ('collapse',),
+            'fields': (('started', 'completed'),),
+        }),
+    )

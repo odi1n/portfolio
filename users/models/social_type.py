@@ -7,8 +7,8 @@ class SocialType(models.Model):
                             max_length=255)
 
     class Meta:
-        verbose_name = "Социальный тип"
-        verbose_name_plural = 'Социальные типы'
+        verbose_name = "Соц. сети - виды"
+        verbose_name_plural = 'Соц. сети - виды'
 
     def __str__(self):
         return self.name

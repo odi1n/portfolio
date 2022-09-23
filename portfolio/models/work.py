@@ -11,18 +11,22 @@ class Work(models.Model):
                              help_text="Например: Junior, Middle, Senio, DevOps, Архитектор, ...",
                              max_length=255)
     salary = models.IntegerField(verbose_name="Желаемая зарплата",
+                                 help_text="Например: 100000",
                                  default=0,
                                  null=True,
                                  blank=True)
     post = models.CharField(verbose_name="Желаемая должность",
+                            help_text="Например: Backend, Frontend, ...",
                             max_length=255,
                             null=True,
                             blank=True)
     travel_time = models.CharField(verbose_name="Время в пути",
+                                   help_text="Например: не имеет значение",
                                    max_length=255,
                                    null=True,
                                    blank=True)
     employment = models.CharField(verbose_name="Занятость",
+                                  help_text="Например: полная, неполная, и тд.",
                                   max_length=255,
                                   null=True,
                                   blank=True)
