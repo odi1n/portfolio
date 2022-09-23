@@ -163,7 +163,9 @@
           <p>Опыт работы:</p>
           <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
             {% for work_place in portfolio.user.workplace_set.all %}
-              <li>{{ work_place|work_place_tags }} </li>
+              <li>{{ work_place.text }} - {{ work_place.whom }}. {{ work_place.date_start|date:"d b Y" }} -
+                {% if work_place.date_end is None %}По текущий момент{% else %}
+                  {{ work_place.date_end|date:"d b Y" }}{% endif %}</li>
             {% endfor %}
           </ol>
         </div>
