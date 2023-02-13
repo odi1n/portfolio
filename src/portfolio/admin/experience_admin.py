@@ -4,20 +4,25 @@ from ..models import Experience
 
 @admin.register(Experience)
 class ExperienceAdmin(admin.ModelAdmin):
-    autocomplete_fields = ['portfolio',
-                           'project']
-    list_display = ['portfolio',
-                    'project',
-                    'description',
-                    'is_enabled',
-                    'started',
-                    'completed']
+    autocomplete_fields = ["portfolio", "project"]
+    list_display = [
+        "portfolio",
+        "project",
+        "description",
+        "is_enabled",
+        "started",
+        "completed",
+    ]
     fieldsets = (
-        ('Настройки', {
-            'fields': ('portfolio', 'project', 'description', 'is_enabled')
-        }),
-        ('Дата работы над проектом', {
-            'classes': ('collapse',),
-            'fields': (('started', 'completed'),),
-        }),
+        (
+            "Настройки",
+            {"fields": ("portfolio", "project", "description", "is_enabled")},
+        ),
+        (
+            "Дата работы над проектом",
+            {
+                "classes": ("collapse",),
+                "fields": (("started", "completed"),),
+            },
+        ),
     )

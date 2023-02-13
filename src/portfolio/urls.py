@@ -18,5 +18,5 @@ from django.urls import path
 from .views import PortfolioView
 
 urlpatterns = [
-    path('portfolio/<int:pk>', PortfolioView.as_view(), name="portfolio"),
+    path("portfolio/<int:pk>", PortfolioView.as_view(), name="portfolio"),
 ]

@@ -5,5 +5,5 @@ from ...models import Social
 
 class SocialStackedInline(admin.StackedInline):
     model = Social
-    classes = ['collapse']
+    classes = ["collapse"]
     extra = 0

@@ -18,8 +18,13 @@ from django.contrib.auth import views
 from .views import user_login, SignupView, MainView
 
 urlpatterns = [
-    path('', user_login, name="login"),
-    path('profile/', MainView.as_view(), name="profile"),
-    path('logout/', views.LogoutView.as_view(), name="logout", kwargs={'redirect_authenticated_user': True}),
-    path('signup/', SignupView.as_view(), name="signup"),
+    path("", user_login, name="login"),
+    path("profile/", MainView.as_view(), name="profile"),
+    path(
+        "logout/",
+        views.LogoutView.as_view(),
+        name="logout",
+        kwargs={"redirect_authenticated_user": True},
+    ),
+    path("signup/", SignupView.as_view(), name="signup"),
 ]

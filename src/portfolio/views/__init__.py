@@ -1,1 +1,1 @@
-from .portfolio_view import PortfolioView # noqa
+from .portfolio_view import PortfolioView  # noqa

@@ -5,5 +5,5 @@ from ...models import Experience
 
 class ExperienceStackedInline(admin.StackedInline):
     model = Experience
-    classes = ['collapse']
+    classes = ["collapse"]
     extra = 1

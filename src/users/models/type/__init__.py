@@ -1,1 +1,1 @@
-from .sex_type import SexType # noqa
+from .sex_type import SexType  # noqa
