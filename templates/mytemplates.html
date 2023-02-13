@@ -113,7 +113,7 @@
 <body>
 <div class='wrapper'>
   <div class='header'>
-    <h2 class="stack">{{ portfolio.user.get_name }}. {{ portfolio.get_stack_display }}</h2>
+    <h2 class="stack">{{ portfolio.user.get_name }}</h2>
     <h3 class="experience">Возраст: {{ portfolio.user.age }}. Опыт работы c: {{ portfolio.experience_with.year }}.</h3>
   </div>
 
@@ -162,7 +162,7 @@
         <div>
           <p>Опыт работы:</p>
           <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
-            {% for work_place in portfolio.user.workplace_set.all %}
+            {% for work_place in portfolio.user.workplace_set.all|dictsortreversed:"date_start" %}
               <li>{{ work_place.text }} - {{ work_place.whom }}. {{ work_place.date_start|date:"d b Y" }} -
                 {% if work_place.date_end is None %}По текущий момент{% else %}
                   {{ work_place.date_end|date:"d b Y" }}{% endif %}</li>
