@@ -25,14 +25,3 @@ RUN poetry config virtualenvs.create false \
     && poetry install $(test "$YOUR_ENV" == production && echo "--no-dev") --no-interaction --no-ansi
 
 COPY . /home/app/portfolio
-
-#RUN python manage.py dumpdata > db.json \
-#    && python manage.py collectstatic --noinput \
-#    && python manage.py makemigrations \
-#    && python manage.py migrate
-
-RUN apt-get update \
-    && apt-get -y install npm
-
-WORKDIR /home/app/portfolio
-RUN npm install
