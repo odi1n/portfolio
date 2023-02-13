@@ -1,14 +1,7 @@
-@import "./node_modules/bootstrap/scss/bootstrap";
-@import "./login";
-
-$font-stack: Helvetica, sans-serif;
-$primary-color: #333;
-$backgroup-color: #eaeaea;
-
 body {
     margin: 0;
     padding: 0;
-    background-color: $backgroup-color;
+    background-color: #eaeaea;
     height: 100vh;
 }
 
@@ -32,6 +25,7 @@ body {
         margin-top: 3rem;
         padding-bottom: 1rem;
     }
+
     .container {
         flex-direction: column;
         align-items: center;
@@ -50,19 +44,17 @@ body {
     }
 }
 
-
 .shadow-box {
     padding: 20px;
     background: #fff;
-    //box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%);
     border-radius: 5px;
+}
 
-    &_auth {
-        display: inline-block;
-        text-align: center;
-    }
+.shadow-box_auth {
+    display: inline-block;
+    text-align: center;
+}
 
-    &__title {
-        padding-bottom: 4%;
-    }
+.shadow-box__title {
+    padding-bottom: 4%;
 }

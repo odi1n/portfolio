@@ -3,13 +3,6 @@ from .base import *
 # Secret Key
 SECRET_KEY = env.str('SECRET_KEY')
 
-# Static
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# Css - sass
-SASS_PROCESSOR_ROOT = STATIC_ROOT
-
 # Debug
 DEBUG = env.bool('DEBUG')
 
@@ -24,6 +17,6 @@ DATABASES = {
         'USER': env.str("POSTGRES_USER"),
         'PASSWORD': env.str("POSTGRES_PASSWORD"),
         'HOST': env.str("POSTGRES_HOST"),
-        'POST': env.str("POSTGRES_POST"),
+        'POST': env.str("POSTGRES_PORT"),
     }
 }

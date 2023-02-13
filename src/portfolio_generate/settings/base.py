@@ -43,13 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.staticfiles",
 
     # Humanize
     'django.contrib.humanize',
-
-    # css - sass
-    'sass_processor',
 
     # plugins
     'django_json_widget',
@@ -132,7 +129,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = "static/"
+# STATIC_ROOT = os.path.join(BASE_DIR.parent, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR.parent, 'static')
+]
 
 # Media
 MEDIA_URL = '/media/'
@@ -145,15 +146,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # My User Model
 AUTH_USER_MODEL = 'users.CustomUser'
-
-# Css - SASS
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
-]
-
-SASS_PRECISION = 8
 
 # Auth - Login
 LOGIN_REDIRECT_URL = '/'
