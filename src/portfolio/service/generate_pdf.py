@@ -2,7 +2,6 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from weasyprint import HTML
 import tempfile
-from django.views import View
 
 
 def generate(templates, context, data:str):

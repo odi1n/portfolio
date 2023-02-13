@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AnonymousUser
 from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 
 from ..forms import SignupForm
 from ..models import CustomUser

@@ -1,3 +1,3 @@
-from .login_form import LoginForm
-from .signup_form import SignupForm
-from .profile_form import ProfileForm
+from .login_form import LoginForm # noqa
+from .signup_form import SignupForm # noqa
+from .profile_form import ProfileForm # noqa

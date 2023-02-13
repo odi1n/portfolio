@@ -1,7 +1,7 @@
-from .custom_user import CustomUser
-from .social import Social
-from .social_type import SocialType
-from .work_places import WorkPlace
-from .language_type import LanguageType
-from .language import Language
-from .education import Education
+from .custom_user import CustomUser # noqa
+from .social import Social # noqa
+from .social_type import SocialType # noqa
+from .work_places import WorkPlace # noqa
+from .language_type import LanguageType # noqa
+from .language import Language # noqa
+from .education import Education # noqa

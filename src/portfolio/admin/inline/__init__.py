@@ -1,2 +1,2 @@
-from .experience_inline import ExperienceStackedInline
-from .work_inline import WorkStackedInline
+from .experience_inline import ExperienceStackedInline # noqa
+from .work_inline import WorkStackedInline # noqa

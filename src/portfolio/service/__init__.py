@@ -1,1 +1,1 @@
-from .generate_pdf import generate
+from .generate_pdf import generate  # noqa

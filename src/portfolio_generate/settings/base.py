@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 
 import environ
-from django.utils.crypto import get_random_string
 
 # Env
 # Environment
