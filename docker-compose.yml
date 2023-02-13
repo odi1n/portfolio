@@ -7,8 +7,7 @@ services:
     build:
       context: ./
       dockerfile: _docker/web/Dockerfile
-    command:
-      - bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./src:/home/app/portfolio
       - ./src/portfolio_generate/static/:/home/app/portfolio/portfolio_generate/static
