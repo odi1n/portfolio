@@ -1,4 +1,5 @@
 from django.db import models
+
 from .custom_user import CustomUser
 from .social_type import SocialType
 

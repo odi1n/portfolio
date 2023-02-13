@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.db import models
 from django.utils.html import format_html
+
 from django_json_widget.widgets import JSONEditorWidget
-from .inline import *
+
 from ..models import Portfolio
+from .inline import *
 
 
 @admin.register(Portfolio)

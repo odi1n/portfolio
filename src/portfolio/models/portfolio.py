@@ -1,6 +1,7 @@
 from django.db import models
-from .type import StackType
+
 from .tech import Tech
+from .type import StackType
 
 
 def sett_def():

@@ -1,9 +1,10 @@
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
 from django.contrib.auth.models import AnonymousUser
-from django.shortcuts import render, HttpResponseRedirect
+from django.http import HttpResponse
+from django.shortcuts import HttpResponseRedirect, render
 
 from portfolio.models import Portfolio
+
 from ..forms import LoginForm
 from ..models import CustomUser
 

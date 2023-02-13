@@ -1,7 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
-from django.shortcuts import redirect
-
 
 from ..forms import ProfileForm
 from ..models import CustomUser

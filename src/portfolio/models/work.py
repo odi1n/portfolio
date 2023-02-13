@@ -1,6 +1,7 @@
 from django.db import models
-from .type import ScheduleType
+
 from .portfolio import Portfolio
+from .type import ScheduleType
 
 
 class Work(models.Model):

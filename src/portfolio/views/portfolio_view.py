@@ -1,10 +1,11 @@
-import transliterate
+from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse
 from django.views import View
-from django.contrib.auth.models import AnonymousUser
 from django.views.decorators.clickjacking import xframe_options_exempt
 
-from ..models import Portfolio, Work, Experience
+import transliterate
+
+from ..models import Experience, Portfolio, Work
 from ..models.type import CategoryType
 from ..service.generate_pdf import generate
 

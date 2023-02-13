@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .inline import *
 from ..models import CustomUser
+from .inline import *
 
 
 @admin.register(CustomUser)
