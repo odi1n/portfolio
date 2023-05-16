@@ -44,7 +44,7 @@ class PortfolioView(View):
         for category in categories:
             portfolio_data = Portfolio.objects.filter(
                 tech__category=category, user=portfolio.user, id=portfolio.id
-            ).order_by("tech")
+            ).order_by("tech__text", "tech__category")
             if portfolio_data.count() > 0:
                 techs.append(
                     {
