@@ -28,5 +28,5 @@ class Experience(models.Model):
         verbose_name_plural = "Опыт"
         ordering = ("-started",)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Проект: {self.project}, описание: {self.description[:150]}..."

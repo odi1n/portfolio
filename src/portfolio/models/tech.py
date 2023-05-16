@@ -12,8 +12,6 @@ class Tech(models.Model):
     class Meta:
         verbose_name = "Технологии"
         verbose_name_plural = "Технологии"
-        # ordering = ['category',
-        #             'text']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.get_category_display()}:  {self.text}"

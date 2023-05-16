@@ -4,7 +4,7 @@ from .tech import Tech
 from .type import StackType
 
 
-def sett_def():
+def sett_def() -> dict[str, bool]:
     return {"portfolio": False, "work_places": False}
 
 
@@ -27,7 +27,7 @@ class Portfolio(models.Model):
         verbose_name = "Портфолио"
         verbose_name_plural = "Портфолио"
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.name is not None:
             return f"{self.name}"
         return f"{self.get_stack_display()}"

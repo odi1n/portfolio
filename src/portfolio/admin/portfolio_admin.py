@@ -1,3 +1,5 @@
+from typing import Any
+
 from django.contrib import admin
 from django.db import models
 from django.utils.html import format_html
@@ -28,7 +30,7 @@ class PortfolioAdmin(admin.ModelAdmin):
         models.JSONField: {"widget": JSONEditorWidget},
     }
 
-    def generate_pdf_preview_html(self, obj):
+    def generate_pdf_preview_html(self, obj: Any) -> Any:
         return format_html(
             '<a class="button" href="/portfolio/%s" target="_blank">Открыть портфолио</a>'
             % obj.id

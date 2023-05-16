@@ -8,5 +8,5 @@ class LanguageType(models.Model):
         verbose_name = "Язык"
         verbose_name_plural = "Языки"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.text

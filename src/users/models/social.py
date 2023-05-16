@@ -18,5 +18,5 @@ class Social(models.Model):
         verbose_name_plural = "Соц. сети"
         ordering = ["social_type"]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.social_type} - {self.values}"

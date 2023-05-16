@@ -36,7 +36,7 @@ class SignupForm(forms.ModelForm):
         model = CustomUser
         fields = ("username",)
 
-    def clean_password2(self):
+    def clean_password2(self) -> str:
         cd = self.cleaned_data
         if cd["password"] != cd["password2"]:
             raise forms.ValidationError("Пароли не совпадают!")

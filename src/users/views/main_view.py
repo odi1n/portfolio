@@ -1,3 +1,11 @@
+from typing import Any, Union
+
+from django.http import (
+    HttpRequest,
+    HttpResponse,
+    HttpResponsePermanentRedirect,
+    HttpResponseRedirect,
+)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
 
@@ -8,12 +16,14 @@ from ..models import CustomUser
 class MainView(View):
     template_name = "profile.html"
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         post = get_object_or_404(CustomUser, pk=request.user.id)
         profile_form = ProfileForm(instance=post)
         return render(self.request, self.template_name, {"forms": profile_form})
 
-    def post(self, request, *args, **kwargs):
+    def post(
+        self, request: HttpRequest, *args: Any, **kwargs: Any
+    ) -> Union[HttpResponsePermanentRedirect, HttpResponseRedirect]:
         forms = ProfileForm(request.POST)
         if forms.is_valid():
             user = CustomUser.objects.filter(id=request.user.id).first()

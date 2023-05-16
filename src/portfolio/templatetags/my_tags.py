@@ -1,10 +1,12 @@
+from typing import Any
+
 from django import template
 
 register = template.Library()
 
 
 @register.filter()
-def dict_join(qs):
+def dict_join(qs: Any) -> str:
     values = ""
     for index, value in enumerate(qs.values("text")):
         values += value["text"]

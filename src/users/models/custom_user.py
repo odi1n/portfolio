@@ -20,9 +20,9 @@ class CustomUser(AbstractUser):
     age = models.IntegerField(verbose_name="Возраст", default=0)
 
     @property
-    def get_full_name(self):
+    def get_full_name(self) -> str:
         return f"{self.last_name} {self.first_name} {self.middle_name}"
 
     @property
-    def get_name(self):
+    def get_name(self) -> str:
         return f"{self.last_name} {self.first_name}"

@@ -1,3 +1,5 @@
+from typing import Any
+
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 
@@ -5,10 +7,10 @@ from weasyprint import HTML
 
 
 def generate(
-    templates,
-    context,
+    templates: str,
+    context: dict[str, Any],
     data: str,
-):
+) -> HttpResponse:
     # Обработка шаблона
     html_string = render_to_string(templates, context)
     html = HTML(string=html_string)

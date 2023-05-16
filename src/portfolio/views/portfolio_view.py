@@ -1,5 +1,7 @@
+from typing import Any
+
 from django.contrib.auth.models import AnonymousUser
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 from django.views import View
 from django.views.decorators.clickjacking import xframe_options_exempt
 
@@ -11,10 +13,10 @@ from ..service.generate_pdf import generate
 
 
 class PortfolioView(View):
-    template_name = "mytemplates.html"
+    template_name: str = "mytemplates.html"
 
     @xframe_options_exempt
-    def get(self, request, *args, **kwargs):
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         if request.user == AnonymousUser():
             return HttpResponse("Error user auth")
 

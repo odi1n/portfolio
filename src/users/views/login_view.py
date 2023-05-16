@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import AnonymousUser
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import HttpResponseRedirect, render
 
 from portfolio.models import Portfolio
@@ -9,7 +9,7 @@ from ..forms import LoginForm
 from ..models import CustomUser
 
 
-def user_login(request):
+def user_login(request: HttpRequest) -> HttpResponse:
     if request.method != "POST":
         if request.user == AnonymousUser():
             form = LoginForm()

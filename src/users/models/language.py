@@ -17,5 +17,5 @@ class Language(models.Model):
         verbose_name = "Знание языков"
         verbose_name_plural = "Знание языков"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.text

@@ -33,5 +33,5 @@ class WorkPlace(models.Model):
         verbose_name = "Место работы"
         verbose_name_plural = "Места работы"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.text
