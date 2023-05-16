@@ -60,6 +60,5 @@ profile = "black"
 skip_glob=["migrations"]
 skip=["migrations"]
 default_section = "THIRDPARTY"
-known_django = ["django", "hcaptcha_field", "easy_thumbnails", "pytils", "ckeditor", "seo", "rest_framework",
-    "aiogram", "requests","extra_settings","celery"]
+known_django = ["django", "weasyprint", "transliterate"]
 sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
