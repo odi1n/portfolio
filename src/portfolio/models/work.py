@@ -5,9 +5,7 @@ from .type import ScheduleType
 
 
 class Work(models.Model):
-    portfolio = models.ForeignKey(
-        Portfolio, verbose_name="Порфолио", on_delete=models.CASCADE
-    )
+    portfolio = models.ForeignKey(Portfolio, verbose_name="Порфолио", on_delete=models.CASCADE)
     grade = models.CharField(
         verbose_name="Градация",
         help_text="Например: Junior, Middle, Senio, DevOps, Архитектор, ...",

@@ -1,9 +1,7 @@
 from .base import *
 
 # Secret Key
-SECRET_KEY = env.str(
-    "SECRET_KEY", default="abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
-)
+SECRET_KEY = env.str("SECRET_KEY", default="abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)")
 
 # Debug
 DEBUG = env.bool("DEBUG", default=True)

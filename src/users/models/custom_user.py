@@ -11,12 +11,8 @@ class CustomUser(AbstractUser):
     first_name = models.CharField(verbose_name="Имя", max_length=150)
     last_name = models.CharField(verbose_name="Фамилия", max_length=150)
     middle_name = models.CharField(verbose_name="Отчество", max_length=150, blank=True)
-    last_career_meeting = models.DateField(
-        verbose_name="Последняя карьерная встреча", null=True, blank=True
-    )
-    sex = models.IntegerField(
-        verbose_name="Пол", choices=SexType.choices, default=SexType.MALE
-    )
+    last_career_meeting = models.DateField(verbose_name="Последняя карьерная встреча", null=True, blank=True)
+    sex = models.IntegerField(verbose_name="Пол", choices=SexType.choices, default=SexType.MALE)
     age = models.IntegerField(verbose_name="Возраст", default=0)
 
     @property

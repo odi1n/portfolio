@@ -9,12 +9,8 @@ def sett_def() -> dict[str, bool]:
 
 
 class Portfolio(models.Model):
-    name = models.CharField(
-        verbose_name="Название", max_length=255, blank=True, null=True
-    )
-    user = models.ForeignKey(
-        "users.CustomUser", verbose_name="Пользователь", on_delete=models.CASCADE
-    )
+    name = models.CharField(verbose_name="Название", max_length=255, blank=True, null=True)
+    user = models.ForeignKey("users.CustomUser", verbose_name="Пользователь", on_delete=models.CASCADE)
     experience_with = models.DateField(
         verbose_name="Опыт работы с",
         help_text="Указать год, с которого начали работать",

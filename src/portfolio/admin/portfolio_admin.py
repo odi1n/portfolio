@@ -31,10 +31,7 @@ class PortfolioAdmin(admin.ModelAdmin):
     }
 
     def generate_pdf_preview_html(self, obj: Any) -> Any:
-        return format_html(
-            '<a class="button" href="/portfolio/%s" target="_blank">Открыть портфолио</a>'
-            % obj.id
-        )
+        return format_html('<a class="button" href="/portfolio/%s" target="_blank">Открыть портфолио</a>' % obj.id)
 
     generate_pdf_preview_html.short_description = "Портфолио"
     generate_pdf_preview_html.allow_tags = True

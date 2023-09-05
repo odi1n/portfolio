@@ -5,12 +5,8 @@ from .social_type import SocialType
 
 
 class Social(models.Model):
-    user = models.ForeignKey(
-        CustomUser, verbose_name="Пользователь", on_delete=models.CASCADE
-    )
-    social_type = models.ForeignKey(
-        SocialType, verbose_name="Тип соц.", on_delete=models.PROTECT
-    )
+    user = models.ForeignKey(CustomUser, verbose_name="Пользователь", on_delete=models.CASCADE)
+    social_type = models.ForeignKey(SocialType, verbose_name="Тип соц.", on_delete=models.PROTECT)
     values = models.CharField(verbose_name="Значение", max_length=255)
 
     class Meta:

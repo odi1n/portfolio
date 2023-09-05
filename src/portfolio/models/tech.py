@@ -4,9 +4,7 @@ from .type import CategoryType
 
 
 class Tech(models.Model):
-    category = models.IntegerField(
-        verbose_name="Категория", choices=CategoryType.choices
-    )
+    category = models.IntegerField(verbose_name="Категория", choices=CategoryType.choices)
     text = models.CharField("Текст", max_length=255)
 
     class Meta:

@@ -15,9 +15,7 @@ def user_login(request: HttpRequest) -> HttpResponse:
             form = LoginForm()
         else:
             portfolios = Portfolio.objects.filter(user=request.user)
-            return render(
-                request, "registration/login.html", {"portfolios": portfolios}
-            )
+            return render(request, "registration/login.html", {"portfolios": portfolios})
     else:
         form = LoginForm(request.POST)
         if form.is_valid():

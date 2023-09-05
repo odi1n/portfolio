@@ -17,18 +17,14 @@ class ProfileForm(forms.ModelForm):
         required=True,
         min_length=2,
         max_length=20,
-        widget=forms.TextInput(
-            attrs={"placeholder": "Иванович", "class": "form-control"}
-        ),
+        widget=forms.TextInput(attrs={"placeholder": "Иванович", "class": "form-control"}),
     )
     middle_name = forms.CharField(
         label="Отчество",
         required=True,
         min_length=2,
         max_length=20,
-        widget=forms.TextInput(
-            attrs={"placeholder": "Иванов", "class": "form-control"}
-        ),
+        widget=forms.TextInput(attrs={"placeholder": "Иванов", "class": "form-control"}),
     )
     sex = forms.CharField(
         label="Пол",

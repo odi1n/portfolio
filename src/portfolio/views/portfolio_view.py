@@ -1,11 +1,10 @@
 from typing import Any
 
+import transliterate
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpRequest, HttpResponse
 from django.views import View
 from django.views.decorators.clickjacking import xframe_options_exempt
-
-import transliterate
 
 from ..models import Experience, Portfolio, Work
 from ..models.type import CategoryType
@@ -15,7 +14,7 @@ from ..service.generate_pdf import generate
 class PortfolioView(View):
     template_name: str = "mytemplates.html"
 
-    @xframe_options_exempt
+    # @xframe_options_exempt
     def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         if request.user == AnonymousUser():
             return HttpResponse("Error user auth")
@@ -23,9 +22,7 @@ class PortfolioView(View):
         if request.user.is_staff:
             portfolio = Portfolio.objects.filter(id=kwargs.get("pk")).first()
         else:
-            portfolio = Portfolio.objects.filter(
-                id=kwargs.get("pk"), user=request.user
-            ).first()
+            portfolio = Portfolio.objects.filter(id=kwargs.get("pk"), user=request.user).first()
         if portfolio is None:
             return HttpResponse("Error number portfolio")
 

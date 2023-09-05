@@ -5,12 +5,8 @@ from .language_type import LanguageType
 
 
 class Language(models.Model):
-    user = models.ForeignKey(
-        CustomUser, verbose_name="Пользователь", on_delete=models.CASCADE
-    )
-    language_type = models.ForeignKey(
-        LanguageType, verbose_name="Язык", on_delete=models.PROTECT
-    )
+    user = models.ForeignKey(CustomUser, verbose_name="Пользователь", on_delete=models.CASCADE)
+    language_type = models.ForeignKey(LanguageType, verbose_name="Язык", on_delete=models.PROTECT)
     text = models.CharField(verbose_name="Уровень знания", max_length=255)
 
     class Meta:
