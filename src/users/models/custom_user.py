@@ -1,11 +1,14 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
-from .type import SexType
+from django.utils.translation import ugettext_lazy as _
 
 
 class CustomUser(AbstractUser):
     """Кастомная модель пользователя"""
+
+    class SexType(models.IntegerChoices):
+        MALE = 0, _("Мужчина")
+        FEMALE = 1, _("Женщина")
 
     first_name = models.CharField(verbose_name="Имя", max_length=150)
     last_name = models.CharField(verbose_name="Фамилия", max_length=150)

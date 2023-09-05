@@ -1,7 +1,6 @@
 from django import forms
 
 from ..models import CustomUser
-from ..models.type import SexType
 
 
 class ProfileForm(forms.ModelForm):
@@ -28,7 +27,7 @@ class ProfileForm(forms.ModelForm):
     )
     sex = forms.CharField(
         label="Пол",
-        widget=forms.Select(attrs={"class": "form-control"}, choices=SexType.choices),
+        widget=forms.Select(attrs={"class": "form-control"}, choices=CustomUser.SexType.choices),
     )
     age = forms.CharField(
         label="Возраст",
