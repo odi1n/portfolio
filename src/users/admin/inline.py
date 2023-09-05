@@ -1,9 +1,6 @@
 from django.contrib import admin
 
-from ..models import Education
-from ..models import Language
-from ..models import Social
-from ..models import WorkPlace
+from ..models import Education, Language, Social, WorkPlace
 
 
 class EducationStackedInline(admin.StackedInline):
@@ -17,10 +14,12 @@ class LanguageStackedInline(admin.StackedInline):
     classes = ["collapse"]
     extra = 0
 
+
 class SocialStackedInline(admin.StackedInline):
     model = Social
     classes = ["collapse"]
     extra = 0
+
 
 class WorkPlaceStackedInline(admin.StackedInline):
     model = WorkPlace
