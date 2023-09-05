@@ -29,7 +29,7 @@ class PortfolioView(View):
         experiences = Experience.objects.filter(portfolio=portfolio)
 
         categories = [
-            CategoryType.PROJRAMS_LANGUAGE,
+            CategoryType.PROGRAMS_LANGUAGE,
             CategoryType.FRAMEWORK,
             CategoryType.LIBRARIES,
             CategoryType.DBMS,

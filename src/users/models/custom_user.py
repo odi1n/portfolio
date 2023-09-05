@@ -4,7 +4,6 @@ from django.db import models
 from .type import SexType
 
 
-# Create your models here.
 class CustomUser(AbstractUser):
     """Кастомная модель пользователя"""
 

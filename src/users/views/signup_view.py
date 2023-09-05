@@ -22,20 +22,19 @@ class SignupView(View):
         self, *args: Any, **kwargs: Any
     ) -> Union[HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect]:
         if self.request.user == AnonymousUser():
-            user_form = SignupForm()
-            return render(self.request, self.template_name, {"user_form": user_form})
-        else:
-            return redirect("/")
+            return render(self.request, self.template_name, {"user_form": SignupForm()})
+        return redirect("/")
 
     def post(
         self, *args: Any, **kwargs: Any
     ) -> Union[HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect]:
         user_form = SignupForm(self.request.POST)
-        if user_form.is_valid():
-            user = user_form.save()
-            user.username = user_form.data["username"]
-            user.set_password(user_form.data["password"])
-            user.save()
-            login(self.request, user)
-            return redirect("/")
-        return render(self.request, self.template_name, {"user_form": user_form})
+        if user_form.is_valid() is False:
+            return render(self.request, self.template_name, {"user_form": user_form})
+
+        user = user_form.save()
+        user.username = user_form.data["username"]
+        user.set_password(user_form.data["password"])
+        user.save()
+        login(self.request, user)
+        return redirect("/")

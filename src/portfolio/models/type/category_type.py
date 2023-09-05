@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class CategoryType(models.IntegerChoices):
-    PROJRAMS_LANGUAGE = 0, _("Язык программирования/Разметка")
+    PROGRAMS_LANGUAGE = 0, _("Язык программирования/Разметка")
     FRAMEWORK = 1, _("Фреймворк")
     LIBRARIES = 2, _("Библиотека")
     DBMS = 3, _("DBMS")

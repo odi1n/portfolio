@@ -8,7 +8,7 @@ class Work(models.Model):
     portfolio = models.ForeignKey(Portfolio, verbose_name="Порфолио", on_delete=models.CASCADE)
     grade = models.CharField(
         verbose_name="Градация",
-        help_text="Например: Junior, Middle, Senio, DevOps, Архитектор, ...",
+        help_text="Например: Junior, Middle, Senior, DevOps, Архитектор, ...",
         max_length=255,
     )
     salary = models.IntegerField(

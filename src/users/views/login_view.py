@@ -25,7 +25,6 @@ def user_login(request: HttpRequest) -> HttpResponse:
                 if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect("/")
-                    # return render(request, 'registration/login.html', {})
                 else:
                     return HttpResponse("Disabled account")
             else:
