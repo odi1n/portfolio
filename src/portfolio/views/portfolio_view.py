@@ -4,7 +4,6 @@ import transliterate
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpRequest, HttpResponse
 from django.views import View
-from django.views.decorators.clickjacking import xframe_options_exempt
 
 from ..models import Experience, Portfolio, Work
 from ..models.type import CategoryType

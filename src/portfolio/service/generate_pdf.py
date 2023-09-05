@@ -2,7 +2,6 @@ from typing import Any
 
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from django.views.decorators.clickjacking import xframe_options_exempt
 from weasyprint import HTML
 
 
@@ -20,5 +19,5 @@ def generate(
     response["Content-Disposition"] = f"inline; filename={data}.pdf"
     response["Content-Transfer-Encoding"] = "utf8-to-binary"
 
-    result = html.write_pdf(response)
+    html.write_pdf(response)
     return response
