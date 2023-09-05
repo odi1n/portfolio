@@ -27,12 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
+SECRET_KEY = env.str("SECRET_KEY", default="abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=True)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default="*")
 
 # Application definition
 
@@ -87,10 +87,20 @@ WSGI_APPLICATION = "portfolio_generate.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": env.str("POSTGRES_DB"),
+        "USER": env.str("POSTGRES_USER"),
+        "PASSWORD": env.str("POSTGRES_PASSWORD"),
+        "HOST": env.str("POSTGRES_HOST"),
+        "POST": env.str("POSTGRES_PORT"),
     }
 }
 
@@ -117,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ru-RU"
 
-TIME_ZONE = "Europe/Moscow"
+TIME_ZONE = env.str("TIME_ZONE", default="Europe/Moscow")
 USE_I18N = True
 USE_L10N = False
 USE_TZ = True
@@ -125,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR.parent, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR.parent, "static")
 # STATICFILES_DIRS = [os.path.join(BASE_DIR.parent, "static")]
 
 # Media
