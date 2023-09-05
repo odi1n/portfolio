@@ -1,10 +1,15 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from .portfolio import Portfolio
-from .type import ScheduleType
 
 
 class Work(models.Model):
+    class ScheduleType(models.IntegerChoices):
+        REMOTE = 0, _("удаленный")
+        FULL = 1, _("полный")
+        FLEXIBLE = 2, _("гибкий")
+
     portfolio = models.ForeignKey(Portfolio, verbose_name="Порфолио", on_delete=models.CASCADE)
     grade = models.CharField(
         verbose_name="Градация",

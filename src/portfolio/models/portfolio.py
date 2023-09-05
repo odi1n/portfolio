@@ -1,7 +1,7 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from .tech import Tech
-from .type import StackType
 
 
 def sett_def() -> dict[str, bool]:
@@ -9,6 +9,11 @@ def sett_def() -> dict[str, bool]:
 
 
 class Portfolio(models.Model):
+    class StackType(models.IntegerChoices):
+        FULLSTACK = 0, _("Fullstack")
+        BACKEND = 1, _("Back-End")
+        FRONTEND = 2, _("Front-End")
+
     name = models.CharField(verbose_name="Название", max_length=255, blank=True, null=True)
     user = models.ForeignKey("users.CustomUser", verbose_name="Пользователь", on_delete=models.CASCADE)
     experience_with = models.DateField(
