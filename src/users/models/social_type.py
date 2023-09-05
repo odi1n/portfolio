@@ -9,8 +9,8 @@ class SocialType(models.Model):
     )
 
     class Meta:
-        verbose_name = "Соц. сети - виды"
-        verbose_name_plural = "Соц. сети - виды"
+        verbose_name = "Социальные сети"
+        verbose_name_plural = "Социальные сети"
 
     def __str__(self) -> str:
         return self.name

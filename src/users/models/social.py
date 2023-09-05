@@ -10,8 +10,8 @@ class Social(models.Model):
     values = models.CharField(verbose_name="Значение", max_length=255)
 
     class Meta:
-        verbose_name = "Соц. сети"
-        verbose_name_plural = "Соц. сети"
+        verbose_name = "Контакт обратной связи"
+        verbose_name_plural = "Контакты обратной связи"
         ordering = ["social_type"]
 
     def __str__(self) -> str:
