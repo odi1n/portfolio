@@ -6,8 +6,7 @@ from django.http import HttpRequest, HttpResponse
 from django.views import View
 from django.views.decorators.clickjacking import xframe_options_exempt
 
-from .models import Experience, Portfolio, Work
-from .models.type import CategoryType
+from .models import Experience, Portfolio, Tech, Work
 from .service.generate_pdf import generate
 
 
@@ -30,14 +29,14 @@ class PortfolioView(View):
         experiences = Experience.objects.filter(portfolio=portfolio)
 
         categories = [
-            CategoryType.PROGRAMS_LANGUAGE,
-            CategoryType.FRAMEWORK,
-            CategoryType.LIBRARIES,
-            CategoryType.DBMS,
-            CategoryType.CLOUD_SERVICE,
-            CategoryType.OTHER,
-            CategoryType.DEVELOPMENT_TOOL,
-            CategoryType.APP_TYPE,
+            Tech.CategoryType.PROGRAMS_LANGUAGE,
+            Tech.CategoryType.FRAMEWORK,
+            Tech.CategoryType.LIBRARIES,
+            Tech.CategoryType.DBMS,
+            Tech.CategoryType.CLOUD_SERVICE,
+            Tech.CategoryType.OTHER,
+            Tech.CategoryType.DEVELOPMENT_TOOL,
+            Tech.CategoryType.APP_TYPE,
         ]
         techs = []
         for category in categories:
