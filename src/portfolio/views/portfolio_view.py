@@ -11,7 +11,7 @@ from ..service.generate_pdf import generate
 
 
 class PortfolioView(View):
-    template_name: str = "mytemplates.html"
+    template_name: str = "template_1.html"
 
     # @xframe_options_exempt
     def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
