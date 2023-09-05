@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("SECRET_KEY", default="abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)")
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=True)
@@ -36,21 +36,24 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default="*")
 
 # Application definition
 
-INSTALLED_APPS = [
+DEFAULT_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Humanize
-    "django.contrib.humanize",
-    # plugins
-    "django_json_widget",
-    # my project
+    "django.contrib.humanize",  # Humanize
+]
+
+PLUGINS_APPS = ["django_json_widget"]
+
+MY_APPS = [
     "portfolio.apps.PortfolioConfig",
     "users.apps.UsersConfig",
 ]
+
+INSTALLED_APPS = [*DEFAULT_APPS, *PLUGINS_APPS, *MY_APPS]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
