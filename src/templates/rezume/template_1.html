@@ -1,0 +1,304 @@
+{% load static %}
+{% load my_tags %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Резюме - {{ portfolio.user.get_name }}. {{ portfolio.get_stack_display }}</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+
+  <style type="text/css">
+    @page {
+      size: a4;
+      margin: 1.5cm 1.25cm;
+
+      /*Нумерация страниц*/
+      @bottom-right {
+        font-size: 12px;
+        color: #333333;
+        content: counter(page);
+      }
+    }
+
+    @font-face {
+      font-family: Arial;
+      src: url("{% static " fonts/Arial.ttf " %}");
+    }
+
+    @font-face {
+      font-family: Maler;
+      src: url("{% static " fonts/Maler.ttf " %}");
+    }
+
+    @font-face {
+      font-family: Verdana;
+      src: url("{% static " fonts/Verdana.ttf " %}");
+    }
+
+    body {
+      font-weight: 200;
+      font-size: 14px;
+      color: #000000;
+    }
+
+    h1, h2, h3, h4, h5 {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    p, a {
+      margin: 0px;
+      padding: 0px;
+      font-size: 12px;
+      text-decoration: none;
+      color: #000000;
+    }
+
+    .hr_item {
+      border: none;
+      height: 1px;
+      color: #838383; /* old IE */
+      background-color: #838383; /* Modern Browsers */
+      margin: 10px 0;
+    }
+
+    .hr_table {
+      border: none;
+      height: 1px;
+      color: #f1f1f1; /* old IE */
+      background-color: #F1F1F1FF; /* Modern Browsers */
+      margin: 20px 0;
+    }
+
+    .header {
+      font-size: 20px;
+      font-weight: 100;
+      text-align: left;
+    }
+
+    .header_information {
+      margin-bottom: 10px;
+    }
+
+    .header_experience {
+      font-size: 12px;
+    }
+
+    .items {
+      margin-bottom: 15px;
+    }
+
+    tr, td {
+      font-size: 10px;
+    }
+
+    .heading {
+      font-weight: bold;
+      font-size: 12px;
+      padding-right: 50px;
+    }
+
+    .pd-2 {
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body class="wrapper">
+<div class="header">
+  <h2 class="header_information">{{ portfolio.user.get_name }}</h2>
+  <h3 class="header_experience">Возраст: {{ portfolio.user.age }}. Опыт работы c: {{ portfolio.experience_with.year }}.</h3>
+</div>
+
+<hr class="hr_item">
+
+{% if portfolio.setting.portfolio == True %}
+  <div class="about_me">
+
+    {% if portfolio.user.social_set.exists %}
+      <div class="items">
+        {% for social in portfolio.user.social_set.all %}
+          <p>
+            {{ social.social_type }}:
+            <span>{{ social.values }}</span>
+          </p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if portfolio.user.education_set.exists %}
+      <div class="items">
+        <p>Образование:</p>
+        <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+          {% for education in portfolio.user.education_set.all %}
+            <li>
+              {{ education }}. {{ education.date_start|date:"d b Y" }} -
+
+              {% if education.date_end %}
+                {{ education.date_end|date:"d b Y" }}
+              {% else %}
+                По текущий момент
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+
+    {% if portfolio.user.language_set.exists %}
+      <div class="items">
+        <p>Знание языков:</p>
+        <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+          {% for language in portfolio.user.language_set.all %}
+            <li>{{ language.language_type }} - {{ language.text }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+
+    {% if portfolio.user.workplace_set.exists %}
+      <div>
+        <p>Опыт работы:</p>
+        <ol style="margin: 0px 35px; padding: 0px; font-size: 12px">
+          {% for work_place in portfolio.user.workplace_set.all|dictsortreversed:"date_start" %}
+            <li>
+              {{ work_place.text }} - {{ work_place.whom }}. {{ work_place.date_start|date:"d b Y" }} -
+
+              {% if work_place.date_end is None %}
+                По текущий момент
+              {% else %}
+                {{ work_place.date_end|date:"d b Y" }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+  </div>
+  <hr class="hr_item">
+{% endif %}
+
+{% if portfolio.setting.work_places == True %}
+  <div class="work_places">
+    {% if work.grade %}
+      <div>
+        <p>Грейд:
+          <span>{{ work.grade }}</span>
+        </p>
+      </div>
+    {% endif %}
+
+    {% if work.salary %}
+      <div>
+        <p>Желаемая зарплата:
+          <span>{{ work.salary|intcomma }}₽</span>
+        </p>
+      </div>
+    {% endif %}
+
+    {% if work.post %}
+      <div class="items">
+        <p>Желаемая должность:
+          <span>{{ work.post }}</span>
+        </p>
+      </div>
+    {% endif %}
+
+    {% if work.travel_time %}
+      <div>
+        <p>Время в пути до работы:
+          <span>{{ work.travel_time }}</span>
+        </p>
+      </div>
+    {% endif %}
+
+    {% if work.employment %}
+      <div>
+        <p>Занятость:
+          <span>{{ work.employment }}</span>
+        </p>
+      </div>
+    {% endif %}
+
+    {% if work.schedule is not None %}
+      <div>
+        <p>График работы:
+          <span>{{ work.get_schedule_display }}</span>
+        </p>
+      </div>
+    {% endif %}
+
+  </div>
+  <hr class="hr_item">
+{% endif %}
+
+<div class="skills">
+  {% for tech in techs %}
+    <div class="items">
+      <p>{{ tech.label }}:</p>
+      <p>{{ tech.params|join:', ' }}</p>
+    </div>
+
+  {% endfor %}
+</div>
+<hr class="hr_item">
+
+{% if experiences %}
+  <div class="experiences">
+    <h2 class="header_information">Опыт</h2>
+    <div>
+      {% for experience in experiences %}
+        {% if experience.is_enabled %}
+          <table border="1">
+
+            <tr>
+              <th class="heading pd-2">Проект</th>
+              <th class="heading pd-2">
+                {% if experience.project.link %}
+                  <a href="{{ experience.project.link }}">{{ experience.project.title }}</a>
+                {% else %}
+                  <span>{{ experience.project.title }}</span>
+                {% endif %}
+              </th>
+            </tr>
+
+            <tr>
+              <td class="heading pd-2">Описание</td>
+              <td class="pd-2">
+                {% if experience.project.description %}
+                  <span>{{ experience.project.description }}</span>
+                  <br>
+                  <br>
+                {% endif %}
+                <span>{{ experience.description }}</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="heading pd-2">Технологии</td>
+              <td class="pd-2">{{ experience.project.tech.all|dict_join }}</td>
+            </tr>
+
+            {% if experience.started is not None %}
+              <tr>
+                <td class="heading">Работал</td>
+                <td>C {{ experience.started|date:"d b Y" }} -
+                  {% if experience.completed %}
+                    по: {{ experience.completed|date:"d b Y" }}
+                  {% else %}
+                    По текущий момент
+                  {% endif %}</td>
+              </tr>
+            {% endif %}
+
+          </table>
+          <hr class="hr_table">
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+</body>
+</html>
